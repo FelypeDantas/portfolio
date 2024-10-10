@@ -21,7 +21,7 @@ Sou um(a) desenvolvedor(a) apaixonado(a) por criar soluções inovadoras e funci
 
 ## Como Navegar
 
-Você pode explorar meu portfólio acessando o link: [seu-link-aqui](https://portfofio-chi.vercel.app/). Sinta-se à vontade para navegar pelos projetos e conhecer mais sobre minhas habilidades.
+Você pode explorar meu portfólio acessando o link: [Portfolio-Felype](https://portfofio-chi.vercel.app/). Sinta-se à vontade para navegar pelos projetos e conhecer mais sobre minhas habilidades.
 
 ## Contato
 
