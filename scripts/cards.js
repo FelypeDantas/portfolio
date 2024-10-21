@@ -11,6 +11,12 @@ const projetos = [
         imagem: "./img/projetos/cartao.png",
         link: "https://felypedantas.github.io/Tailwind_Cartao/"
     },
+    {
+        titulo: "Mixa-Games",
+        descricao: "Projeto usado para acoplar todos os jogos que fiz em um espaço, para que o publico possa se divertir e fique mais facil ao compartilhar podendo enviar apenas um link para que a diversão começe",
+        imagem: "./img/projetos/Mixa-Games.gif",
+        link: "https://felypedantas.github.io/Mixa_Games/"
+    },
     // Adicione os outros projetos aqui...
 ];
 
