@@ -17,6 +17,12 @@ const projetos = [
         imagem: "./img/projetos/Mixa-Games.gif",
         link: "https://felypedantas.github.io/Mixa_Games/"
     },
+    {
+        titulo: "Svelte-Perfis",
+        descricao: "Projeto desenvolvido durante o curso da Alura sobre Svelte, um framework Front-End, neste curso foi abordado diversas habilidades incluindo mexer com GitHubAPI.",
+        imagem: "./img/projetos/SveltePerfis.gif",
+        link: "https://svelte-perfis-two.vercel.app/"
+    },
     // Adicione os outros projetos aqui...
 ];
 
