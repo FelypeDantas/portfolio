@@ -23,6 +23,12 @@ const projetos = [
         imagem: "./img/projetos/SveltePerfis.gif",
         link: "https://svelte-perfis-two.vercel.app/"
     },
+    {
+        titulo: "Lista de Compras",
+        descricao: "Projeto desenvolvido durante um curso da Alura sobre Front-End, as habilidades que adquiri durante o projeto foram: listas, localStorage, objetos dinamicos.",
+        imagem: "./img/projetos/Lista_de_Mercado.gif",
+        link: "https://felypedantas.github.io/Lista_Compras/"
+    },
     // Adicione os outros projetos aqui...
 ];
 
