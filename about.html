@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre mim</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
@@ -16,16 +17,19 @@
             <i class="bi bi-list"></i> <!-- Ícone de hambúrguer -->
         </button>        
         <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="index.html">Home</a>
-            <a class="cabecalho__menu__link" href="about.html">Sobre mim</a>
-            <a class="cabecalho__menu__link" href="projects.html">Projetos</a>
+            <a class="cabecalho__menu__link" href="index.html"><i class="menu__icon bi bi-house-door"></i></a>
+            <a class="cabecalho__menu__link" href="about.html"><i class="menu__icon bi bi-person"></i></a>
+            <a class="cabecalho__menu__link" href="projects.html"><i class="menu__icon bi bi-window-stack"></i></a>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                    <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="modo-claro">
-                    <label class="form-check-label" for="modo-claro">Modo noturno</label>
-                    </div></a>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="modo-claro">
+                            <div class="header__toggle form-check-label">
+                                <i id="modo-claro" class="bi bi-sun"></i>
+                            </div>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -35,9 +39,12 @@
             <h1 class="apresentacao__conteudo__titulo">Sobre mim</h1>
             <p class="apresentacao__conteudo__texto"> O meu nome é Felype Dantas Dos Santos, 
                 tenho 20 anos e estou no meu quinto semestre do curso de análise e desenvolvimento de sistemas
-                 na Fatec Zona Leste, aprendo sobre front-end pelo Youtube e pelos cursos da Alura.</p>
+                 na Fatec Zona Leste, aprendo sobre front-end pelo Youtube e pelos cursos da Alura e da DIO.</p>
             <p class="apresentacao__conteudo__texto"> Sobre outros conhecimentos,<br> fiz curso técnico de administração na ETEC,<br> e outros diversos cursos
-                 de forma livre e online em escolas virtuais gratuitas, como o fundação Bradesco e o portal do Senai, a qual também fiz um curso pago e presencial de informática básica</p>
+                 de forma livre e online em escolas virtuais gratuitas, como o fundação Bradesco e o portal do Senai, a qual também fiz um curso pago e presencial de informática básica.</p>
+            <p class="apresentacao__conteudo__texto">Estou sempre buscando aprender novas habilidades e conhecimentos através de projetos.</p>
+            <img src="./img/projetos/Mixa-Games.gif" />
+            <p class="apresentacao__conteudo__texto__right">Um exemplo seria o Mixa Games, projeto que desenvolvi durante o bootcamp da DIO de Front-End do zero com a Ri.</p>
         </section>
         <img class="imagem-principal" src="img/Imagem.jpg" alt="Felype Dantas">
    </main>

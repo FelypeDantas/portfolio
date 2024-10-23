@@ -9,14 +9,14 @@ body {
     box-sizing: border-box;
     color: #f6f6f6;
     background-color: #f7f7f7;
-    background-image: url('/img/plano-fundo.jpg'); 
+    background-image: url('/img/plano-fundo.jpg');
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
     --roxo-texto: #993399;
 }
 
 [data-bs-theme="dark"] {
-    background-image: none; 
+    background-image: none;
 }
 
 input[type=checkbox] {
@@ -49,8 +49,22 @@ input[type="checkbox"]:focus {
     text-decoration: none;
 }
 
+p,
+span {
+    font-size: 1rem;
+}
+
+.menu__icon {
+    font-size: 1.5rem;
+}
+
+.menu__text {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
 .navbar-toggler {
-    display: none; /* Esconder por padrão */
+    display: none;
 }
 
 .apresentacao {
@@ -73,15 +87,22 @@ input[type="checkbox"]:focus {
     font-family: 'Krona One', sans-serif;
 }
 
-span {
+.titulo {
     color: var(--roxo-texto);
     border: 1px solid var(--roxo-texto);
     padding: 5px;
+    font-size: 1.5rem;
 }
 
-.apresentacao__conteudo__texto {
+.apresentacao__conteudo__texto, .apresentacao__conteudo__texto__right {
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
+}
+
+.apresentacao__conteudo__texto__right {
+    margin-top: 3%;
+    align-items: end;
+    justify-content: end;
 }
 
 .apresentacao__links {
@@ -116,11 +137,6 @@ span {
 
 .icons {
     border-radius: 40px;
-    border: 5px solid var(--roxo-texto);
-}
-
-.apresentacao__links__link:hover {
-    padding: 3%;
 }
 
 strong {
@@ -200,18 +216,18 @@ strong {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        background-color: white; /* ou a cor desejada */
+        background-color: white;
         position: absolute;
         width: 100%;
-        top: 60px; /* ajuste conforme necessário */
+        top: 60px;
         left: 0;
         z-index: 1000;
         padding: 10px;
-        display: none; /* escondido por padrão */
+        display: none;
     }
 
     .cabecalho__menu.active {
-        display: flex; /* mostra quando ativo */
+        display: flex;
     }
 
     .navbar-toggler {
@@ -225,7 +241,7 @@ strong {
 
     [data-bs-theme="dark"] {
         color: white;
-    
+
         .cabecalho__menu,
         .card-body,
         .offcanvas,
@@ -237,6 +253,6 @@ strong {
             --bs-accordion-color: white;
             --bs-btn-color: white;
         }
-    
+
     }
 }

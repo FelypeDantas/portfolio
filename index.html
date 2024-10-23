@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio de Felype Dantas</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
-    crossorigin="anonymous">
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
+
 <body>
-   <header class="cabecalho">
+    <header class="cabecalho">
         <button class="navbar-toggler" aria-label="Toggle navigation">
             <i class="bi bi-list"></i> <!-- Ícone de hambúrguer -->
         </button>
         <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="index.html">Home</a>
-            <a class="cabecalho__menu__link" href="about.html">Sobre mim</a>
-            <a class="cabecalho__menu__link" href="projects.html">Projetos</a>
+            <a class="cabecalho__menu__link" href="index.html"><i class="menu__icon bi bi-house-door"></i></a>
+            <a class="cabecalho__menu__link" href="about.html"><i class="menu__icon bi bi-person"></i></a>
+            <a class="cabecalho__menu__link" href="projects.html"><i class="menu__icon bi bi-window-stack"></i></a>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                    <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="modo-claro">
-                    <label class="form-check-label" for="modo-claro">Modo noturno</label>
-                    </div></a>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="modo-claro">
+                            <div class="header__toggle form-check-label">
+                                <i id="modo-claro" class="bi bi-sun"></i>
+                            </div>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </nav>
-   </header>
-   <main class="apresentacao">
-       <section class="apresentacao__conteudo">
-            <h1 class="apresentacao__conteudo__titulo">Conhecendo a área de <span>Front-end!</span></h1>
-            <p class="apresentacao__conteudo__texto">Olá, eu me chamo Felype Dantas, os meus conhecimentos abrangem <strong>Java,
-                JavaScript, HTML e de CSS. </strong> Atualmente
+    </header>
+    <main class="apresentacao">
+        <section class="apresentacao__conteudo">
+            <h1 class="apresentacao__conteudo__titulo">Soluções em<span class="titulo">Front-end!</span></h1>
+            <p class="apresentacao__conteudo__texto">Olá, eu me chamo Felype Dantas, os meus conhecimentos abrangem
+                <strong>Java,
+                    JavaScript, HTML e CSS. </strong> Atualmente
                 faço faculdade de análise e desenvolvimento de sistemas na Fatec Zona Leste. Vamos Conversar ? </p>
             <div class="apresentacao__links">
                 <h2 class="apresentacao__links__subtitulo">Acesse as minhas redes: </h2>
-                <a class="apresentacao__links__link" href="https://www.linkedin.com/in/felype-dantas-dos-santos-94497b193">
+                <a class="apresentacao__links__link"
+                    href="https://www.linkedin.com/in/felype-dantas-dos-santos-94497b193">
                     <img class="icons" src="img/linkedin.png">
                     Linkedin
                 </a>
@@ -48,14 +55,15 @@
                 </a>
             </div>
         </section>
-              <img class="imagem-principal" src="img/Imagem.jpg" alt="Felype Dantas">
-   </main>
-   <footer class="rodape">
+        <img class="imagem-principal" src="img/Imagem.jpg" alt="Felype Dantas">
+    </main>
+    <footer class="rodape">
         <p>Desenvolvido pelo Felype</p>
-   </footer>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-    crossorigin="anonymous"></script>
-   <script src="./scripts/script.js"></script>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="./scripts/script.js"></script>
 </body>
+
 </html>
