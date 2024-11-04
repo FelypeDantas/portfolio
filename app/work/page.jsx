@@ -65,7 +65,7 @@ const projects = [
             {name: "SASS"}
         ],
         image: "/assets/work/thumb4.png",
-        live: "https://felypedantas.github.io/Hotel-Calmaria/",
+        live: "https://felypedantas.github.io/Spa-Calmaria/",
         github: "https://github.com/FelypeDantas/Spa-Calmaria"
     },
     {
@@ -179,7 +179,7 @@ const Work = () => {
                             </ul>
                             <div className="border border-white/20 "></div>
                             <div className="flex items-center gap-4">
-                                <Link href={project.github}>
+                                <Link href={project.live}>
                                     <TooltipProvider delayDuration={100}>
                                         <Tooltip>
                                             <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -192,7 +192,7 @@ const Work = () => {
                                     </TooltipProvider>
                                 </Link>
 
-                                <Link href={project.live}>
+                                <Link href={project.github}>
                                     <TooltipProvider delayDuration={100}>
                                         <Tooltip>
                                             <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
