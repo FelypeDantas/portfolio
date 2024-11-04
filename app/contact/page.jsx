@@ -45,7 +45,7 @@ const Contact = () => {
             Minha mensagem: ${message}
         `.trim();
 
-        const whatsappUrl = `https://wa.me/YOUR_PHONE_NUMBER?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://wa.me/5511946400631?text=${encodeURIComponent(whatsappMessage)}`;
         
         // Redireciona para a URL do WhatsApp
         window.open(whatsappUrl, '_blank');
