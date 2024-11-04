@@ -109,9 +109,3 @@ const Contact = () => {
 }
 
 export default Contact;
-
-        </motion.section>
-    )
-}
-
-export default Contact;
