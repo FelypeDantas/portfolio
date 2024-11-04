@@ -66,7 +66,7 @@ const projects = [
         ],
         image: "/assets/work/thumb4.png",
         live: "https://felypedantas.github.io/Hotel-Calmaria/",
-        github: "https://github.com/FelypeDantas/Hotel-Calmaria"
+        github: "https://github.com/FelypeDantas/Spa-Calmaria"
     },
     {
         num: "05",
