@@ -152,6 +152,20 @@ const projects = [
         live: "https://felypedantas.github.io/Mixa_Games/",
         github: "https://github.com/FelypeDantas/Mixa_Games"
     },
+     {
+        num: "11",
+        category: "Front-End",
+        title: "Projeto 11",
+        description: "Este projeto consiste em uma calculadora funcional desenvolvida utilizando as tecnologias HTML, CSS e JavaScript. A interface é intuitiva e moderna, projetada para proporcionar uma experiência amigável ao usuário.",
+        stack: [
+            {name: "HTML5"},
+            {name: "CSS3"},
+            {name: "Javascript"},
+        ],
+        image: "/assets/work/thumb11.png",
+        live: "https://felypedantas.github.io/Calculadora_Simples/",
+        github: "https://github.com/FelypeDantas/Calculadora_Simples"
+    },
 ];
 
 const Work = () => {
