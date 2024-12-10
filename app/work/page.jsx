@@ -166,6 +166,21 @@ const projects = [
         live: "https://felypedantas.github.io/Calculadora_Simples/",
         github: "https://github.com/FelypeDantas/Calculadora_Simples"
     },
+    {
+        num: "12",
+        category: "Front-End",
+        title: "Projeto 12",
+        description: "Este projeto consiste em uma calculadora de IMC funcional desenvolvida utilizando as tecnologias HTML, CSS e JavaScript. A interface é intuitiva e moderna, projetada para proporcionar uma experiência amigável ao usuário.",
+        stack: [
+            {name: "HTML5"},
+            {name: "CSS3"},
+            {name: "Javascript"},
+            {name: "Char.js"},
+        ],
+        image: "/assets/work/thumb12.png",
+        live: "https://felypedantas.github.io/Calculadora_IMC/",
+        github: "https://github.com/FelypeDantas/Calculadora_IMC"
+    },
 ];
 
 const Work = () => {
