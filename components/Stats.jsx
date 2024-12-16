@@ -16,7 +16,7 @@ const stats = [
         text: "Tecnologias"
     },
     {
-        num: 24,
+        num: 25,
         text: "Repositorios GitHub"
     }
 ]
