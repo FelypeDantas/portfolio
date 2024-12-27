@@ -30,7 +30,7 @@ const Stats = () => {
     useEffect(() => {
         // Função para buscar a quantidade de repositórios do GitHub
         const fetchReposCount = async () => {
-            const githubUsername = "seu-usuario"; // Substitua pelo seu nome de usuário no GitHub
+            const githubUsername = "FelypeDantas"; // Substitua pelo seu nome de usuário no GitHub
             try {
                 const response = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
                 if (response.ok) {
