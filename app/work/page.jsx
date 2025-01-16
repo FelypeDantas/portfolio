@@ -181,6 +181,20 @@ const projects = [
         live: "https://felypedantas.github.io/Calculadora_IMC/",
         github: "https://github.com/FelypeDantas/Calculadora_IMC"
     },
+    {
+        num: "13",
+        category: "Front-End",
+        title: "Projeto 13",
+        description: "Este projeto consiste em uma galeria de desenhos feitos com JavaScript",
+        stack: [
+            {name: "HTML5"},
+            {name: "CSS3"},
+            {name: "Javascript"},
+        ],
+        image: "/assets/work/thumb13.png",
+        live: "https://felypedantas.github.io/Gallery_draw/",
+        github: "https://github.com/FelypeDantas/Gallery_draw/"
+    },
 ];
 
 const Work = () => {
