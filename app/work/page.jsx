@@ -195,6 +195,20 @@ const projects = [
         live: "https://felypedantas.github.io/Gallery_draw/",
         github: "https://github.com/FelypeDantas/Gallery_draw/"
     },
+    {
+        num: "14",
+        category: "Front-End",
+        title: "Projeto 14",
+        description: "Este projeto consiste em um cadastro de clientes feito usando POO, ele salva os clientes em máquina.",
+        stack: [
+            {name: "HTML5"},
+            {name: "CSS3"},
+            {name: "Javascript"},
+        ],
+        image: "/assets/work/thumb14.png",
+        live: "https://felypedantas.github.io/cadastro_clientes/",
+        github: "https://github.com/FelypeDantas/cadastro_clientes"
+    },
 ];
 
 const Work = () => {
