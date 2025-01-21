@@ -209,6 +209,20 @@ const projects = [
         live: "https://felypedantas.github.io/cadastro_clientes/",
         github: "https://github.com/FelypeDantas/cadastro_clientes"
     },
+     {
+        num: "15",
+        category: "Front-End",
+        title: "Projeto 15",
+        description: "Este projeto consiste em um desafio de lógica com javascript criado no 7DaysOfCode da Alura",
+        stack: [
+            {name: "HTML5"},
+            {name: "CSS3"},
+            {name: "Javascript"},
+        ],
+        image: "/assets/work/thumb15.png",
+        live: "https://felypedantas.github.io/Comparador_valores/",
+        github: "https://github.com/FelypeDantas/Comparador_valores"
+    },
 ];
 
 const Work = () => {
