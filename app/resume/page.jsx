@@ -46,7 +46,12 @@ const experience = {
         {
             company: "Fatec Zona Leste",
             position: "Estagiario de TI",
-            duration: "2024 - present"
+            duration: "2024 - 2024"
+        },
+        {
+            company: "Fatec Zona Leste",
+            position: "Monitor de Algoritmos",
+            duration: "2023 - 2023"
         },
         {
             company: "Leandro Vendas",
