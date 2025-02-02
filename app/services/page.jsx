@@ -9,7 +9,7 @@ const services = [
         num: '01',
         title: 'Web Development',
         description: 'Desenvolvedor web cria e mantém sites, garantindo que sejam funcionais, responsivos e esteticamente agradáveis. Trabalha com linguagens de programação, design e experiência do usuário para otimizar a presença online.',
-        href: ''
+        href: 'https://portfolio-umber-seven-61.vercel.app/work'
     },
     {
         num: '02',
