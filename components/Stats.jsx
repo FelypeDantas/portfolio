@@ -6,8 +6,8 @@ import CountUp from "react-countup";
 // Dados dos stats, agora o número de repositórios é configurado dinamicamente
 const stats = [
     {
-        num: 3,
-        text: "Meses de experiência"
+        num: 1,
+        text: "Ano de experiência"
     },
     {
         num: 12,
