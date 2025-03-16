@@ -209,6 +209,20 @@ const projects = [
         live: "https://felypedantas.github.io/cadastro_clientes/",
         github: "https://github.com/FelypeDantas/cadastro_clientes"
     },
+    {
+        num: "15",
+        category: "Front-End",
+        title: "Projeto 15",
+        description: "Este é o meu cartão de visitas criado e adicionado na web, possui os meus contatos.",
+        stack: [
+            {name: "HTML5"},
+            {name: "Bootstrap5"},
+            {name: "TailwindCSS"},
+        ],
+        image: "/assets/work/thumb15.png",
+        live: "https://felypedantas.github.io/Cartao_visitas/",
+        github: "https://github.com/FelypeDantas/Cartao_visitas"
+    },
 ];
 
 const Work = () => {
