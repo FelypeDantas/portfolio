@@ -8,7 +8,7 @@ const uxdesign = [
     {
         num: '01',
         title: 'Canva',
-        href: '/canva'
+        href: 'https://portfolio-umber-seven-61.vercel.app/canva'
     },
     {
         num: '02',
