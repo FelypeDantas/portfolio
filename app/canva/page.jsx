@@ -11,7 +11,7 @@ const projects = [
     {
         num: "01",
         title: "Projeto 1",
-        description: "Este Design foi criado para o canva como uma postagem para linkedin sobre colaboradores PCD",
+        description: "Um post de Instagram criado no Canva, com foco em criar uma identidade visual marcante e atraente.",
         image: "/assets/canva/VivaLeve.png"
     },
 

@@ -4,7 +4,7 @@ import {BsArrowDownRight} from 'react-icons/bs';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const uxdesign = [
+const uxdesigners = [
     {
         num: '01',
         title: 'Canva',
@@ -30,7 +30,7 @@ const Uxdesign = () => {
                  initial={{opacity: 0}} 
                  animate={{opacity: 1, transition: {delay: 2.4, duration: 0.4, ease: 'easeIn'},
             }} className="grid grid-cols-1 md:grid-cols-2 gap-[60px]">
-                    {uxdesign.map((service, index) => {
+                    {uxdesigners.map((service, index) => {
                        return <div className='flex-1 flex flex-col justify-center gap-6 group' key={index}>
                         <div className='w-full flex justify-between items-center'>
                             <div className='text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500'>{service.num}</div>
