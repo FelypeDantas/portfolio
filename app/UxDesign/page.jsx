@@ -8,7 +8,7 @@ const uxdesign = [
     {
         num: '01',
         title: 'Canva',
-        href: ''
+        href: '/canva'
     },
     {
         num: '02',

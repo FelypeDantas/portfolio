@@ -4,9 +4,6 @@ import { motion } from "framer-motion";
 import React, {useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css';
-import {BsArrowUpRight, BsGithub, } from "react-icons/bs";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
-import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 
@@ -14,15 +11,13 @@ const projects = [
     {
         num: "01",
         title: "Projeto 1",
-        description: "Este projeto é um relógio digital interativo, desenvolvido com HTML, CSS e JavaScript. Permite ao usuário personalizar a cor da fonte através de uma paleta de cores, com as preferências salvas em host. É uma fusão de dois desafios para iniciantes: a criação de um relógio e a implementação de personalização de cores.",
-        image: "/assets/work/thumb1.png",
-        live: "https://felypedantas.github.io/Relogio_JS/",
-        github: "https://github.com/FelypeDantas/Relogio_JS"
+        description: "Este Design foi criado para o canva como uma postagem para linkedin sobre colaboradores PCD",
+        image: "/assets/canva/VivaLeve.png"
     },
 
 ];
 
-const Work = () => {
+const Canvas = () => {
     const [project, setProjects] = useState(projects[0]);
     const handleSlideChange = (swiper) => {
         const currentIndex = swiper.activeIndex;
@@ -46,33 +41,6 @@ const Work = () => {
                                 })}
                             </ul>
                             <div className="border border-white/20 "></div>
-                            <div className="flex items-center gap-4">
-                                <Link href={project.live}>
-                                    <TooltipProvider delayDuration={100}>
-                                        <Tooltip>
-                                            <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent"/>
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                                <p>Projeto ao vivo</p>
-                                            </TooltipContent>
-                                        </Tooltip>
-                                    </TooltipProvider>
-                                </Link>
-
-                                <Link href={project.github}>
-                                    <TooltipProvider delayDuration={100}>
-                                        <Tooltip>
-                                            <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                                <BsGithub className="text-white text-3xl group-hover:text-accent"/>
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                                <p>Repositório do GitHub</p>
-                                            </TooltipContent>
-                                        </Tooltip>
-                                    </TooltipProvider>
-                                </Link>
-                            </div>
                         </div>
                     </div>
                     <div className="w-full xl:w-[50%]">
@@ -99,4 +67,4 @@ const Work = () => {
     );
 };
 
-export default Work;
+export default Canvas;
