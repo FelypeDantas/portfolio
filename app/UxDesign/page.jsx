@@ -20,7 +20,7 @@ const uxdesigners = [
         title: 'Adobe Photoshop',
         href: ''
     }
-]
+];
 
 const Uxdesign = () => {
     return (
@@ -46,6 +46,6 @@ const Uxdesign = () => {
             </div>
         </section>
     )
-}
+};
 
 export default Uxdesign;
