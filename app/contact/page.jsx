@@ -22,7 +22,7 @@ const info = [
     {
         icon: <FaMapMarkerAlt />,
         title: "Endereço",
-        description: "Rua Pacajas, 212, Vila Cosmopolita"
+        description: "SP, São Paulo, Guaianases"
     },
 ];
 
