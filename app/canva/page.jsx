@@ -31,7 +31,7 @@ const projects = [
     title: "Projeto 2",
     description:
       "Um post de Linkedin criado no Canva, com foco em relembrar a importância do profissional PCD.",
-    image: "/assets/canva/pcd.png",
+    image: "/assets/canva/pcd_camp.png",
     live: "https://www.linkedin.com/posts/felype-dantas-dos-santos_inclusaetopcd-diversidadenotrabalho-profissionaispcd-activity-7341103054944948224-bHom?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC2HIoQBgXROSH00fdkGbb3pXYfiAG0LoBI",
   },
 ];
