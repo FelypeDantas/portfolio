@@ -26,6 +26,14 @@ const projects = [
     image: "/assets/canva/VivaLeve.png",
     live: "https://www.instagram.com/p/DLfYwJVAWkeN57mAMIUF-dp6KGVtEpOD1-bEUg0/",
   },
+  {
+    num: "02",
+    title: "Projeto 2",
+    description:
+      "Um post de Linkedin criado no Canva, com foco em relembrar a importância do profissional PCD.",
+    image: "/assets/canva/pcd.png",
+    live: "https://www.linkedin.com/posts/felype-dantas-dos-santos_inclusaetopcd-diversidadenotrabalho-profissionaispcd-activity-7341103054944948224-bHom?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC2HIoQBgXROSH00fdkGbb3pXYfiAG0LoBI",
+  },
 ];
 
 const CanvaProjects = () => {
