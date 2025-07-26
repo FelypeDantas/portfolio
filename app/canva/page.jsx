@@ -39,8 +39,8 @@ const projects = [
     title: "Projeto 3",
     description:
       "Um mapa conceitual criado nos estudos básicos de DevOps.",
-    image: "/assets/canva/",
-    live: "",
+    image: "/assets/canva/devops.png",
+    live: "https://www.linkedin.com/posts/felype-dantas-dos-santos_devops-containers-buildautomaertico-activity-7354837346921394176-w9aR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC2HIoQBgXROSH00fdkGbb3pXYfiAG0LoBI",
   },
 ];
 
