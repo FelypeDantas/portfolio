@@ -15,7 +15,7 @@ const services = [
         num: '02',
         title: 'UI/UX Design',
         description: 'UI/UX Design envolve a criação de interfaces intuitivas e agradáveis para usuários, focando na usabilidade e na experiência do cliente. O objetivo é tornar produtos digitais mais acessíveis e envolventes, melhorando a interação entre usuários e sistemas.',
-        href: 'https://portfolio-umber-seven-61.vercel.app/UxDesign'
+        href: 'https://portfolio-umber-seven-61.vercel.app/services/UxDesign'
     },
     {
         num: '03',
@@ -27,7 +27,7 @@ const services = [
         num: '04',
         title: 'Back-End Developer',
         description: 'Um desenvolvedor back-end é responsável pela lógica do servidor, bancos de dados e integração de sistemas, garantindo que as funcionalidades de um site ou aplicativo funcionem corretamente. Ele lida com a parte "invisível" da tecnologia, otimizando desempenho e segurança.',
-        href: ''
+        href: 'https://portfolio-umber-seven-61.vercel.app/services/Backend'
     }
 ]
 
