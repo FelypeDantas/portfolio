@@ -223,6 +223,32 @@ const projects = [
         live: "https://felypedantas.github.io/Cartao_visitas/",
         github: "https://github.com/FelypeDantas/Cartao_visitas"
     },
+    {
+        num: "16",
+        category: "Front-End",
+        title: "Projeto 16",
+        description: "Site criado sobre a globalização, feito com HTML e CSS puro.",
+        stack: [
+            {name: "HTML5"},
+            {name: "CSS3"},
+        ],
+        image: "/assets/work/thumb16.png",
+        live: "https://felypedantas.github.io/Globalizacao_projeto_educacional/",
+        github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional"
+    },
+    {
+        num: "17",
+        category: "Full-Stack",
+        title: "Projeto 17",
+        description: "Um cronomêtro online criado com Pyhton e Flask, permitindo aos usuários medir intervalos de tempo diretamente no navegador.",
+        stack: [
+            {name: "Python"},
+            {name: "Flask"},
+        ],
+        image: "/assets/work/thumb17.png",
+        live: "https://cronometro-bzjg.onrender.com/",
+        github: "https://github.com/FelypeDantas/cronometro_python"
+    }
 ];
 
 const Work = () => {
