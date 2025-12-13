@@ -4,25 +4,25 @@ import { BsArrowDownRight } from 'react-icons/bs';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const uxdesigners = [
+const backends = [
   {
     num: '01',
-    title: 'Canva',
-    href: 'https://portfolio-umber-seven-61.vercel.app/canva',
+    title: 'Python',
+    href: 'https://portfolio-umber-seven-61.vercel.app/python',
   },
   {
     num: '02',
-    title: 'Figma',
+    title: 'Java',
     href: '',
   },
   {
     num: '03',
-    title: 'Adobe Photoshop',
+    title: 'C#',
     href: '',
   },
 ];
 
-const UXDesign = () => {
+const Backends = () => {
   return (
     <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0'>
       <div className='container mx-auto'>
@@ -32,7 +32,7 @@ const UXDesign = () => {
           transition={{ delay: 2.4, duration: 0.4, ease: 'easeIn' }}
           className='grid grid-cols-1 md:grid-cols-2 gap-[60px]'
         >
-          {uxdesigners.map((service, index) => {
+          {backends.map((service, index) => {
             const isLinkActive = !!service.href;
 
             return (
@@ -67,4 +67,4 @@ const UXDesign = () => {
   );
 };
 
-export default UXDesign;
+export default Backends;
