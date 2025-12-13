@@ -23,7 +23,7 @@ const projects = [
     title: "Projeto 1",
     description:
       "Um croqui de aplicação web criado no Python, demonstrando habilidades em desenvolvimento back-end e lógica de programação.",
-    image: "/assets/thumb17.png",
+    image: "/assets/work/thumb17.png",
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
 ];
