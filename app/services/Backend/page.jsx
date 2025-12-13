@@ -8,7 +8,7 @@ const backends = [
   {
     num: '01',
     title: 'Python',
-    href: 'https://portfolio-umber-seven-61.vercel.app/python',
+    href: 'https://portfolio-umber-seven-61.vercel.app/services/Backend/python',
   },
   {
     num: '02',
