@@ -21,7 +21,7 @@ const about = {
         },
         {
             fieldName: "Experiencia",
-            fieldValue: "1+ Ano"
+            fieldValue: "2+ Anos"
         },
         {
             fieldName: "Nacionalidade",
@@ -69,7 +69,7 @@ const education = {
         {
             institution: "Fatec Zona Leste",
             degree: "ADS",
-            duration: "2022 - present"
+            duration: "2022 - 2026"
         },
         {
             institution: "DIO",
