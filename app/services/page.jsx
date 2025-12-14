@@ -20,7 +20,7 @@ const services = [
     {
         num: '03',
         title: 'Data Analyst',
-        description: 'O analista de dados coleta, organiza e interpreta grandes volumes de informações para identificar padrões e apoiar decisões estratégicas. Ele transforma dados brutos em conhecimento, usando estatística, tecnologia e pensamento crítico.',
+        description: 'O analista de dados coleta, organiza e interpreta grandes volumes de informações para identificar padrões e apoiar decisões estratégicas. Ele transforma dados brutos em conhecimento.',
         href: ''
     },
     {
