@@ -14,7 +14,7 @@ const services = [
     {
         num: '02',
         title: 'UI/UX Design',
-        description: 'UI/UX Design envolve a criação de interfaces intuitivas e agradáveis para usuários, focando na usabilidade e na experiência do cliente. O objetivo é tornar produtos digitais mais acessíveis e envolventes, melhorando a interação entre usuários e sistemas.',
+        description: 'UI/UX Design envolve a criação de interfaces intuitivas e agradáveis para usuários, focando na usabilidade e na experiência do cliente. O objetivo é tornar produtos digitais mais acessíveis e envolventes.',
         href: 'https://portfolio-umber-seven-61.vercel.app/services/UxDesign'
     },
     {
