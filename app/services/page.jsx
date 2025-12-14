@@ -19,8 +19,8 @@ const services = [
     },
     {
         num: '03',
-        title: 'Logo Design',
-        description: 'O design de logotipos envolve a criação de identidades visuais únicas e memoráveis para marcas. Um bom logotipo transmite os valores da empresa e estabelece uma conexão emocional com o público.',
+        title: 'Data Analyst',
+        description: 'O analista de dados coleta, organiza e interpreta grandes volumes de informações para identificar padrões e apoiar decisões estratégicas. Ele transforma dados brutos em conhecimento, usando estatística, tecnologia e pensamento crítico.',
         href: ''
     },
     {
