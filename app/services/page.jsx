@@ -26,7 +26,7 @@ const services = [
     {
         num: '04',
         title: 'Back-End Developer',
-        description: 'Um desenvolvedor back-end é responsável pela lógica do servidor, bancos de dados e integração de sistemas, garantindo que as funcionalidades de um site ou aplicativo funcionem corretamente. Ele lida com a parte "invisível" da tecnologia, otimizando desempenho e segurança.',
+        description: 'O desenvolvedor back-end é responsável pela lógica do servidor, bancos de dados e integração de sistemas, garantindo que as funcionalidades de um site ou aplicativo funcionem corretamente. Otimizando desempenho e segurança.',
         href: 'https://portfolio-umber-seven-61.vercel.app/services/Backend'
     }
 ]
