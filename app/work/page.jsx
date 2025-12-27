@@ -248,6 +248,32 @@ const projects = [
         image: "/assets/work/thumb17.png",
         live: "https://cronometro-bzjg.onrender.com/",
         github: "https://github.com/FelypeDantas/cronometro_python"
+    },
+    {
+        num: "18",
+        category: "Full-Stack",
+        title: "Projeto 18",
+        description: "Um sistema de cálculo de impostos desenvolvido em Python com Flask, que permite aos usuários calcular impostos de forma eficiente e precisa.",
+        stack: [
+            {name: "Python"},
+            {name: "Flask"},
+        ],
+        image: "/assets/work/thumb18.png",
+        live: "https://sistema-financeiro-9arh.onrender.com/",
+        github: "https://github.com/FelypeDantas/sistema_financeiro"
+    },
+    {
+        num: "19",
+        category: "Full-Stack",
+        title: "Projeto 19",
+        description: "Um sistema de análise de dados criado em Python para facilitar análises de frequência e valores únicos.",
+        stack: [
+            {name: "Python"},
+            {name: "Flask"},
+        ],
+        image: "/assets/work/thumb19.png",
+        live: "https://sistema-de-analise-de-dados.onrender.com/",
+        github: "https://github.com/FelypeDantas/sistema-de-analise-de-dados"
     }
 ];
 

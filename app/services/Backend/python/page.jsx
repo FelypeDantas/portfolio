@@ -26,6 +26,22 @@ const projects = [
     image: "/assets/work/thumb17.png",
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
+  {
+    num: "02",
+    title: "Projeto 2",
+    description:
+      "Um sistema de calculo de impostos em Python.",
+    image: "/assets/work/thumb18.png",
+    github: "https://github.com/FelypeDantas/sistema_financeiro"
+  },
+  {
+    num: "03",
+    title: "Projeto 3",
+    description:
+      "Um sistema de análise de dados de planilhas utilizando Python.",
+    image: "/assets/work/thumb19.png",
+    github: "https://github.com/FelypeDantas/sistema-de-analise-de-dados"
+  }
 ];
 
 const BackProjects = () => {
