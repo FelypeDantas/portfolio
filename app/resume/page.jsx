@@ -44,6 +44,11 @@ const experience = {
     description: "Sou desenvolvedor web com experiência em um projeto de estágio de três meses, onde contribuí para o desenvolvimento de soluções digitais. Ao longo de três anos de faculdade, me dediquei a projetos próprios, aprimorando minhas habilidades em programação e design. Estou sempre em busca de novos desafios para expandir meu conhecimento e aplicar minha criatividade em soluções inovadoras.",
     items: [
         {
+            company: "Sendas distribuidora",
+            position: "Jovem Aprendiz - central do fornecedor",
+            duration: "2025 - 2026"
+        },
+        {
             company: "Fatec Zona Leste",
             position: "Estagiario de TI",
             duration: "2024"
@@ -57,7 +62,7 @@ const experience = {
             company: "Leandro Vendas",
             position: "Assistente de vendas",
             duration: "2018 - 2020"
-        },
+        }
     ]
 }
 
