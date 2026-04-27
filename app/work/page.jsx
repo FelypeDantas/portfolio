@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
+import { projects } from "@/data/projects";
 
 // 🔹 Componente reutilizável de botão com tooltip
 const IconButton = ({ href, icon: Icon, label }) => (
