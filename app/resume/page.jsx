@@ -260,16 +260,15 @@ const Resume = () => {
               <SkillsGrid />
             </TabsContent>
 
-            <TabsContent value="about">
+            <TabsContent value="about" className="flex flex-col gap-[30px] text-center xl:text-left">
               <SectionHeader {...about} />
-
-              {/* 🔥 mesma estrutura vertical dos outros */}
-              <div className="mt-[30px]">
+            
+              <ScrollArea className="h-[400px]">
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
                   {about.info.map((item) => (
                     <li
                       key={item.id}
-                      className="flex gap-4 justify-center xl:justify-start"
+                      className="flex items-center justify-center xl:justify-start gap-4"
                     >
                       <span className="text-white/60 min-w-[120px]">
                         {item.label}
@@ -280,7 +279,7 @@ const Resume = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </ScrollArea>
             </TabsContent>
           </div>
         </Tabs>
