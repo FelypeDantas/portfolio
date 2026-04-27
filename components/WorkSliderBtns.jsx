@@ -1,16 +1,47 @@
 "use client";
 
+import * as React from "react";
 import { useSwiper } from "swiper/react";
-import {PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
+import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 
-const WorkSliderBtns = ({containerStyles, btnStyles, iconsStyles}) => {
-    const swiper = useSwiper();
-    return(
+const WorkSliderBtns = ({
+  containerStyles = "",
+  btnStyles = "",
+  iconsStyles = "",
+}) => {
+  const swiper = useSwiper();
+
+  const handlePrev = React.useCallback(() => {
+    swiper?.slidePrev();
+  }, [swiper]);
+
+  const handleNext = React.useCallback(() => {
+    swiper?.slideNext();
+  }, [swiper]);
+
+  if (!swiper) return null;
+
+  return (
     <div className={containerStyles}>
-        <button className={btnStyles} onClick={() => swiper.slidePrev()}><PiCaretLeftBold className={iconsStyles}/></button>
-        <button className={btnStyles} onClick={() => swiper.slideNext()}><PiCaretRightBold className={iconsStyles}/></button>
+      <button
+        type="button"
+        className={btnStyles}
+        onClick={handlePrev}
+        aria-label="Slide anterior"
+      >
+        <PiCaretLeftBold className={iconsStyles} />
+      </button>
+
+      <button
+        type="button"
+        className={btnStyles}
+        onClick={handleNext}
+        aria-label="Próximo slide"
+      >
+        <PiCaretRightBold className={iconsStyles} />
+      </button>
     </div>
-    );
+  );
 };
 
 export default WorkSliderBtns;
