@@ -2,16 +2,15 @@
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-// 🧠 Provider global
 const TooltipProvider = ({
   delayDuration = 300,
   skipDelayDuration = 100,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) => (
+}) => (
   <TooltipPrimitive.Provider
     delayDuration={delayDuration}
     skipDelayDuration={skipDelayDuration}
@@ -22,7 +21,6 @@ const TooltipProvider = ({
 const Tooltip = TooltipPrimitive.Root
 const TooltipTrigger = TooltipPrimitive.Trigger
 
-// 🎨 Variantes visuais
 const tooltipVariants = cva(
   "z-50 rounded-md border px-3 py-2 text-sm shadow-md animate-in fade-in-0 zoom-in-95",
   {
@@ -52,19 +50,7 @@ const tooltipVariants = cva(
   }
 )
 
-type TooltipContentProps = React.ComponentPropsWithoutRef<
-  typeof TooltipPrimitive.Content
-> &
-  VariantProps<typeof tooltipVariants> & {
-    sideOffset?: number
-    showArrow?: boolean
-    maxWidth?: number
-  }
-
-const TooltipContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
-  TooltipContentProps
->(
+const TooltipContent = React.forwardRef(
   (
     {
       className,
@@ -87,19 +73,12 @@ const TooltipContent = React.forwardRef<
           style={{ maxWidth, ...style }}
           className={cn(
             tooltipVariants({ variant, size }),
-
-            // multiline elegante
             "leading-relaxed break-words",
-
-            // animação por direção
             "data-[side=bottom]:slide-in-from-top-2",
             "data-[side=left]:slide-in-from-right-2",
             "data-[side=right]:slide-in-from-left-2",
             "data-[side=top]:slide-in-from-bottom-2",
-
-            // saída
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-
             className
           )}
           {...props}
@@ -115,20 +94,9 @@ const TooltipContent = React.forwardRef<
   }
 )
 
-TooltipContent.displayName = TooltipPrimitive.Content.displayName
+TooltipContent.displayName = "TooltipContent"
 
-// 🧩 Rich Tooltip (com estrutura)
-type TooltipRichContentProps = {
-  title?: string
-  description?: string
-  icon?: React.ReactNode
-}
-
-const TooltipRichContent = ({
-  title,
-  description,
-  icon,
-}: TooltipRichContentProps) => {
+const TooltipRichContent = ({ title, description, icon }) => {
   return (
     <div className="flex items-start gap-2">
       {icon && <div className="mt-0.5">{icon}</div>}
@@ -143,16 +111,6 @@ const TooltipRichContent = ({
   )
 }
 
-// 🧠 Wrapper inteligente
-type TooltipWrapperProps = {
-  content?: React.ReactNode
-  title?: string
-  description?: string
-  icon?: React.ReactNode
-  children: React.ReactNode
-  delay?: number
-} & TooltipContentProps
-
 const TooltipWrapper = ({
   content,
   title,
@@ -161,7 +119,7 @@ const TooltipWrapper = ({
   children,
   delay,
   ...props
-}: TooltipWrapperProps) => {
+}) => {
   const finalContent =
     content || (
       <TooltipRichContent
