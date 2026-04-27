@@ -1,63 +1,78 @@
 "use client";
 
-import { BsArrowDownRight } from 'react-icons/bs';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { BsArrowDownRight } from "react-icons/bs";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const backends = [
   {
-    num: '01',
-    title: 'Python',
-    href: 'https://portfolio-umber-seven-61.vercel.app/services/Backend/python',
+    num: "01",
+    title: "Python",
+    href: "https://portfolio-umber-seven-61.vercel.app/services/Backend/python",
   },
   {
-    num: '02',
-    title: 'Java',
-    href: '',
+    num: "02",
+    title: "Java",
+    href: "",
   },
   {
-    num: '03',
-    title: 'C#',
-    href: '',
+    num: "03",
+    title: "C#",
+    href: "",
   },
 ];
 
 const Backends = () => {
   return (
-    <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0'>
-      <div className='container mx-auto'>
+    <section className="min-h-[80vh] flex items-center py-12 xl:py-0">
+      <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.4, duration: 0.4, ease: 'easeIn' }}
-          className='grid grid-cols-1 md:grid-cols-2 gap-[60px]'
+          transition={{ delay: 2.4, duration: 0.4, ease: "easeIn" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-16"
         >
-          {backends.map((service, index) => {
-            const isLinkActive = !!service.href;
+          {backends.map((backend) => {
+            const isActive = Boolean(backend.href);
 
             return (
               <div
-                className='flex-1 flex flex-col justify-center gap-6 group'
-                key={index}
+                key={backend.title}
+                className="flex flex-col justify-center gap-6 group"
               >
-                <div className='w-full flex justify-between items-center'>
-                  <div className='text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500'>
-                    {service.num}
-                  </div>
+                {/* Top */}
+                <div className="flex items-center justify-between">
+                  <span className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition duration-500">
+                    {backend.num}
+                  </span>
+
                   <Link
-                    href={isLinkActive ? service.href : '#'}
-                    className={`w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45 ${
-                      !isLinkActive && 'pointer-events-none opacity-50'
-                    }`}
-                    aria-label={isLinkActive ? `Abrir ${service.title}` : `${service.title} indisponível`}
+                    href={isActive ? backend.href : "#"}
+                    aria-disabled={!isActive}
+                    aria-label={
+                      isActive
+                        ? `Abrir ${backend.title}`
+                        : `${backend.title} indisponível`
+                    }
+                    className={`
+                      w-[70px] h-[70px] flex items-center justify-center rounded-full
+                      transition duration-500
+                      ${isActive
+                        ? "bg-white hover:bg-accent hover:-rotate-45"
+                        : "bg-white opacity-50 pointer-events-none"}
+                    `}
                   >
-                    <BsArrowDownRight className='text-primary text-3xl' />
+                    <BsArrowDownRight className="text-primary text-3xl" />
                   </Link>
                 </div>
-                <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500'>
-                  {service.title}
+
+                {/* Title */}
+                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition duration-500">
+                  {backend.title}
                 </h2>
-                <div className='border-b border-white/20 w-full'></div>
+
+                {/* Divider */}
+                <div className="border-b border-white/20" />
               </div>
             );
           })}
