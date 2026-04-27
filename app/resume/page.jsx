@@ -180,17 +180,17 @@ const Resume = () => {
 
           <div className="w-full">
 
-            <TabsContent value="experience">
+            <TabsContent value="experience" className="flex flex-col gap-[30px]">
               <SectionHeader {...experience} />
               <TimelineList items={experience.items} type="experience" />
             </TabsContent>
 
-            <TabsContent value="education">
+            <TabsContent value="education" className="flex flex-col gap-[30px]">
               <SectionHeader {...education} />
               <TimelineList items={education.items} type="education" />
             </TabsContent>
 
-            <TabsContent value="skills" className="flex flex-col gap-6">
+            <TabsContent value="skills" className="flex flex-col gap-[30px]">
               <SectionHeader
                 title="Skills"
                 description="Tecnologias que uso para transformar ideias em realidade."
@@ -198,16 +198,26 @@ const Resume = () => {
               <SkillsGrid />
             </TabsContent>
 
-            <TabsContent value="about">
+            <TabsContent value="about" className="flex flex-col gap-[30px] text-center xl:text-left">
               <SectionHeader {...about} />
-              <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
-                {about.info.map((item) => (
-                  <li key={item.id} className="flex gap-4 justify-center xl:justify-start">
-                    <span className="text-white/60">{item.label}</span>
-                    <span className="text-xl">{item.value}</span>
-                  </li>
-                ))}
-              </ul>
+
+              <ScrollArea className="h-[400px]">
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+                  {about.info.map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex items-center justify-center xl:justify-start gap-4"
+                    >
+                      <span className="text-white/60 min-w-[120px]">
+                        {item.label}
+                      </span>
+                      <span className="text-xl">
+                        {item.value}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </ScrollArea>
             </TabsContent>
 
           </div>
