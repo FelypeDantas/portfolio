@@ -1,17 +1,34 @@
 "use client";
 
 import {
-  FaHtml5, FaCss3, FaJs, FaJava, FaFigma,
-  FaNodeJs, FaPython, FaBootstrap, FaSass
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaJava,
+  FaFigma,
+  FaNodeJs,
+  FaPython,
+  FaBootstrap,
+  FaSass,
 } from "react-icons/fa";
-import { SiTailwindcss, SiCsharp, SiTypescript } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiCsharp,
+  SiTypescript,
+} from "react-icons/si";
 
 import {
-  Tabs, TabsContent, TabsList, TabsTrigger
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
 } from "@/components/ui/tabs";
 
 import {
-  Tooltip, TooltipContent, TooltipProvider, TooltipTrigger
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -26,25 +43,77 @@ const cardClass =
 
 const experience = {
   title: "Minha Experiência",
-  description: "Minha jornada envolve estágio, projetos próprios e evolução constante no desenvolvimento web.",
+  description:
+    "Minha jornada envolve estágio, projetos próprios e evolução constante no desenvolvimento web.",
   items: [
-    { id: "sendas", company: "Sendas Distribuidora", position: "Jovem Aprendiz - Central do Fornecedor", duration: "2025 - 2026" },
-    { id: "fatec-estagio", company: "Fatec Zona Leste", position: "Estagiário de TI", duration: "2024" },
-    { id: "fatec-monitor", company: "Fatec Zona Leste", position: "Monitor de Algoritmos", duration: "2023" },
-    { id: "leandro", company: "Leandro Vendas", position: "Assistente de Vendas", duration: "2018 - 2020" },
+    {
+      id: "sendas",
+      company: "Sendas Distribuidora",
+      position: "Jovem Aprendiz - Central do Fornecedor",
+      duration: "2025 - 2026",
+    },
+    {
+      id: "fatec-estagio",
+      company: "Fatec Zona Leste",
+      position: "Estagiário de TI",
+      duration: "2024",
+    },
+    {
+      id: "fatec-monitor",
+      company: "Fatec Zona Leste",
+      position: "Monitor de Algoritmos",
+      duration: "2023",
+    },
+    {
+      id: "leandro",
+      company: "Leandro Vendas",
+      position: "Assistente de Vendas",
+      duration: "2018 - 2020",
+    },
   ],
 };
 
 const education = {
   title: "Educação",
-  description: "Formação acadêmica combinada com aprendizado contínuo.",
+  description:
+    "Formação acadêmica combinada com aprendizado contínuo em plataformas digitais.",
   items: [
-    { id: "fatec", institution: "Fatec Zona Leste", degree: "ADS", duration: "2022 - 2026" },
-    { id: "dio", institution: "DIO", degree: "Front-End", duration: "2024" },
-    { id: "alura-js", institution: "Alura", degree: "JavaScript", duration: "2024" },
-    { id: "alura-java", institution: "Alura", degree: "Java", duration: "2024" },
-    { id: "alura-html", institution: "Alura", degree: "HTML & CSS", duration: "2024" },
-    { id: "etec", institution: "ETEC", degree: "Administração", duration: "2020 - 2022" },
+    {
+      id: "fatec",
+      institution: "Fatec Zona Leste",
+      degree: "ADS",
+      duration: "2022 - 2026",
+    },
+    {
+      id: "dio",
+      institution: "DIO",
+      degree: "Front-End com Ri Happy",
+      duration: "2024",
+    },
+    {
+      id: "alura-js",
+      institution: "Alura",
+      degree: "Formação JavaScript",
+      duration: "2024",
+    },
+    {
+      id: "alura-java",
+      institution: "Alura",
+      degree: "Formação Java",
+      duration: "2024",
+    },
+    {
+      id: "alura-html",
+      institution: "Alura",
+      degree: "HTML & CSS",
+      duration: "2024",
+    },
+    {
+      id: "etec",
+      institution: "ETEC Guaianases",
+      degree: "Administração",
+      duration: "2020 - 2022",
+    },
   ],
 };
 
@@ -65,7 +134,8 @@ const skills = [
 
 const about = {
   title: "Sobre mim",
-  description: "Desenvolvedor focado em criar experiências digitais intuitivas.",
+  description:
+    "Desenvolvedor focado em criar experiências digitais intuitivas, combinando código e design com propósito.",
   info: [
     { id: "nome", label: "Nome", value: "Felype Dantas" },
     { id: "tel", label: "Celular", value: "+55 11 94640-0631" },
@@ -81,47 +151,53 @@ const about = {
 // ----------------------
 
 const SectionHeader = ({ title, description }) => (
-  <div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-4 text-center xl:text-left">
     <h3 className="text-4xl font-bold">{title}</h3>
-    <p className="text-white/60 max-w-[600px]">
+    <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
       {description}
     </p>
   </div>
 );
 
 const TimelineList = ({ items, type }) => (
-  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-    {items.map((item) => (
-      <li key={item.id} className={cardClass}>
-        <span className="text-accent">{item.duration}</span>
+  <ScrollArea className="h-[400px]">
+    <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+      {items.map((item) => (
+        <li key={item.id} className={cardClass}>
+          <span className="text-accent">{item.duration}</span>
 
-        <h3 className="text-xl max-w-[260px] min-h-[60px]">
-          {type === "experience" ? item.position : item.degree}
-        </h3>
+          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+            {type === "experience" ? item.position : item.degree}
+          </h3>
 
-        <div className="flex items-center gap-3">
-          <span className="w-[6px] h-[6px] rounded-full bg-accent" />
-          <p className="text-white/60">
-            {type === "experience" ? item.company : item.institution}
-          </p>
-        </div>
-      </li>
-    ))}
-  </ul>
+          <div className="flex items-center gap-3">
+            <span className="w-[6px] h-[6px] rounded-full bg-accent" />
+            <p className="text-white/60">
+              {type === "experience"
+                ? item.company
+                : item.institution}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </ScrollArea>
 );
 
 const SkillsGrid = () => (
   <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
     {skills.map((skill) => (
       <li key={skill.id}>
-        <TooltipProvider>
+        <TooltipProvider delayDuration={100}>
           <Tooltip>
-            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex items-center justify-center group">
+            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
               <div className="text-6xl group-hover:text-accent transition">
                 {skill.icon}
               </div>
             </TooltipTrigger>
-            <TooltipContent>{skill.name}</TooltipContent>
+            <TooltipContent>
+              <p>{skill.name}</p>
+            </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </li>
@@ -137,54 +213,64 @@ const Resume = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="min-h-[80vh] flex items-start justify-center pt-12"
+      animate={{
+        opacity: 1,
+        transition: { delay: 0.4, duration: 0.4 },
+      }}
+      className="min-h-[80vh] flex items-center justify-center py-12"
     >
       <div className="container mx-auto">
-        <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px] items-start">
-
-          {/* MENU */}
-          <TabsList className="flex flex-col max-w-[380px] gap-6">
+        <Tabs
+          defaultValue="experience"
+          className="flex flex-col xl:flex-row gap-[60px]"
+        >
+          <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
             <TabsTrigger value="experience">Experiência</TabsTrigger>
             <TabsTrigger value="education">Educação</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="about">Sobre</TabsTrigger>
           </TabsList>
 
-          {/* CONTEÚDO FIXO */}
+          {/* 🔥 altura fixa garante alinhamento entre TODAS as abas */}
           <div className="w-full min-h-[500px]">
-
-            {/* EXPERIENCE */}
-            <TabsContent value="experience" className="flex flex-col gap-[30px]">
+            <TabsContent value="experience">
               <SectionHeader {...experience} />
-              <ScrollArea className="h-[400px]">
-                <TimelineList items={experience.items} type="experience" />
-              </ScrollArea>
+              <TimelineList
+                items={experience.items}
+                type="experience"
+              />
             </TabsContent>
 
-            {/* EDUCATION */}
-            <TabsContent value="education" className="flex flex-col gap-[30px]">
+            <TabsContent value="education">
               <SectionHeader {...education} />
-              <ScrollArea className="h-[400px]">
-                <TimelineList items={education.items} type="education" />
-              </ScrollArea>
+              <TimelineList
+                items={education.items}
+                type="education"
+              />
             </TabsContent>
 
-            {/* SKILLS */}
-            <TabsContent value="skills" className="flex flex-col gap-[30px]">
-              <SectionHeader title="Skills" description="Tecnologias que uso." />
-              <ScrollArea className="h-[400px]">
-                <SkillsGrid />
-              </ScrollArea>
+            <TabsContent
+              value="skills"
+              className="flex flex-col gap-6"
+            >
+              <SectionHeader
+                title="Skills"
+                description="Tecnologias que uso para transformar ideias em realidade."
+              />
+              <SkillsGrid />
             </TabsContent>
 
-            {/* ABOUT */}
-            <TabsContent value="about" className="flex flex-col gap-[30px]">
+            <TabsContent value="about">
               <SectionHeader {...about} />
-              <ScrollArea className="h-[400px]">
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6">
+
+              {/* 🔥 mesma estrutura vertical dos outros */}
+              <div className="mt-[30px]">
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
                   {about.info.map((item) => (
-                    <li key={item.id} className="flex gap-4">
+                    <li
+                      key={item.id}
+                      className="flex gap-4 justify-center xl:justify-start"
+                    >
                       <span className="text-white/60 min-w-[120px]">
                         {item.label}
                       </span>
@@ -194,9 +280,8 @@ const Resume = () => {
                     </li>
                   ))}
                 </ul>
-              </ScrollArea>
+              </div>
             </TabsContent>
-
           </div>
         </Tabs>
       </div>
