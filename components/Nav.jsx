@@ -9,7 +9,6 @@ const links = [
   { name: "servicos", path: "/services" },
   { name: "resumo", path: "/resume" },
   { name: "trabalho", path: "/work" },
-  { name: "contato", path: "/contact" },
 ];
 
 const Nav = () => {
