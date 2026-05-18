@@ -164,17 +164,6 @@ export const projects: Project[] = [
   {
     num: "13",
     category: "Front-End",
-    title: "Cadastro de Clientes",
-    description:
-      "Sistema com POO para cadastro e persistência local.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
-    image: "/assets/work/thumb14.png",
-    live: "https://felypedantas.github.io/cadastro_clientes/",
-    github: "https://github.com/FelypeDantas/cadastro_clientes",
-  },
-  {
-    num: "14",
-    category: "Front-End",
     title: "Cartão de Visitas",
     description:
       "Página pessoal com contatos e design moderno.",
@@ -188,7 +177,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Cartao_visitas",
   },
   {
-    num: "15",
+    num: "14",
     category: "Front-End",
     title: "Globalização",
     description:
@@ -199,7 +188,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
   },
   {
-    num: "16",
+    num: "15",
     category: "Full-Stack",
     title: "Cronômetro",
     description:
@@ -210,7 +199,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
   {
-    num: "17",
+    num: "16",
     category: "Full-Stack",
     title: "Sistema Financeiro",
     description:
@@ -221,7 +210,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/sistema_financeiro",
   },
   {
-    num: "18",
+    num: "17",
     category: "Full-Stack",
     title: "Análise de Dados",
     description:
