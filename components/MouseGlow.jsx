@@ -8,6 +8,8 @@ export default function MouseGlow() {
   useEffect(() => {
     const glow = glowRef.current;
 
+    if (!glow) return;
+
     let mouseX = 0;
     let mouseY = 0;
 
@@ -16,31 +18,33 @@ export default function MouseGlow() {
 
     const speed = 0.08;
 
-    const moveGlow = () => {
+    const animate = () => {
       currentX += (mouseX - currentX) * speed;
       currentY += (mouseY - currentY) * speed;
 
       glow.style.transform = `
-        translate(
+        translate3d(
           ${currentX - 200}px,
-          ${currentY - 200}px
+          ${currentY - 200}px,
+          0
         )
       `;
 
-      requestAnimationFrame(moveGlow);
+      requestAnimationFrame(animate);
     };
 
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+    const handleMouseMove = (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
     };
 
     window.addEventListener(
       "mousemove",
-      handleMouseMove
+      handleMouseMove,
+      { passive: true }
     );
 
-    moveGlow();
+    animate();
 
     return () => {
       window.removeEventListener(
@@ -56,14 +60,16 @@ export default function MouseGlow() {
       className="
         pointer-events-none
         fixed
-        top-0
         left-0
+        top-0
         z-[1]
         h-[400px]
         w-[400px]
         rounded-full
         bg-accent/20
         blur-[120px]
+        mix-blend-screen
+        will-change-transform
       "
     />
   );
