@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import {
   FaBootstrap,
   FaCss3,
@@ -36,43 +37,19 @@ import {
 } from "@/components/ui/tooltip";
 
 // --------------------------------------------------
-// TYPES
-// --------------------------------------------------
-
-type TimelineItem = {
-  id: string;
-  title: string;
-  subtitle: string;
-  duration: string;
-};
-
-type Skill = {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-};
-
-type AboutItem = {
-  id: string;
-  label: string;
-  value: string;
-};
-
-// --------------------------------------------------
 // STYLES
 // --------------------------------------------------
 
 const CARD_CLASS =
   "bg-[#232329] rounded-xl p-6 flex flex-col justify-center gap-3";
 
-const SECTION_CLASS =
-  "flex flex-col gap-8";
+const SECTION_CLASS = "flex flex-col gap-8";
 
 // --------------------------------------------------
 // DATA
 // --------------------------------------------------
 
-const experiences: TimelineItem[] = [
+const experiences = [
   {
     id: "sendas",
     title: "Jovem Aprendiz - Central do Fornecedor",
@@ -99,7 +76,7 @@ const experiences: TimelineItem[] = [
   },
 ];
 
-const education: TimelineItem[] = [
+const education = [
   {
     id: "fatec",
     title: "ADS",
@@ -126,7 +103,7 @@ const education: TimelineItem[] = [
   },
 ];
 
-const skills: Skill[] = [
+const skills = [
   { id: "html", name: "HTML5", icon: <FaHtml5 /> },
   { id: "css", name: "CSS3", icon: <FaCss3 /> },
   { id: "js", name: "JavaScript", icon: <FaJs /> },
@@ -141,7 +118,7 @@ const skills: Skill[] = [
   { id: "ts", name: "TypeScript", icon: <SiTypescript /> },
 ];
 
-const about: AboutItem[] = [
+const about = [
   {
     id: "name",
     label: "Nome",
@@ -169,19 +146,30 @@ const about: AboutItem[] = [
   },
 ];
 
+const tabs = [
+  {
+    value: "experience",
+    label: "Experiência",
+  },
+  {
+    value: "education",
+    label: "Educação",
+  },
+  {
+    value: "skills",
+    label: "Skills",
+  },
+  {
+    value: "about",
+    label: "Sobre",
+  },
+];
+
 // --------------------------------------------------
 // COMPONENTS
 // --------------------------------------------------
 
-type SectionHeaderProps = {
-  title: string;
-  description: string;
-};
-
-function SectionHeader({
-  title,
-  description,
-}: SectionHeaderProps) {
+function SectionHeader({ title, description }) {
   return (
     <header className="flex flex-col gap-4 text-center xl:text-left">
       <h2 className="text-4xl font-bold">
@@ -195,11 +183,7 @@ function SectionHeader({
   );
 }
 
-type TimelineProps = {
-  items: TimelineItem[];
-};
-
-function Timeline({ items }: TimelineProps) {
+function Timeline({ items }) {
   return (
     <ScrollArea className="h-[420px] pr-4">
       <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -244,7 +228,7 @@ function SkillsGrid() {
               </TooltipTrigger>
 
               <TooltipContent>
-                {skill.name}
+                <p>{skill.name}</p>
               </TooltipContent>
             </Tooltip>
           </li>
@@ -257,25 +241,6 @@ function SkillsGrid() {
 // --------------------------------------------------
 // MAIN
 // --------------------------------------------------
-
-const tabs = [
-  {
-    value: "experience",
-    label: "Experiência",
-  },
-  {
-    value: "education",
-    label: "Educação",
-  },
-  {
-    value: "skills",
-    label: "Skills",
-  },
-  {
-    value: "about",
-    label: "Sobre",
-  },
-];
 
 export default function Resume() {
   return (
