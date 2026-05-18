@@ -62,17 +62,6 @@ export const projects: Project[] = [
   {
     num: "05",
     category: "Front-End",
-    title: "Spider-Man Multiverse",
-    description:
-      "Plataforma com trailers e infos dos filmes do Homem-Aranha.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
-    image: "/assets/work/thumb5.png",
-    live: "https://spider-man-multiverse-ten.vercel.app/",
-    github: "https://github.com/FelypeDantas/Spider-Man_Multiverse",
-  },
-  {
-    num: "06",
-    category: "Front-End",
     title: "Lista de Compras",
     description:
       "Gerenciador de compras com checklist e organização dinâmica.",
@@ -82,7 +71,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Lista_Compras",
   },
   {
-    num: "07",
+    num: "06",
     category: "Full-Stack",
     title: "Svelte Perfis",
     description:
@@ -93,7 +82,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/svelte-perfis",
   },
   {
-    num: "08",
+    num: "07",
     category: "Front-End",
     title: "Cuidados de Verão",
     description:
@@ -108,7 +97,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Site_Verao",
   },
   {
-    num: "09",
+    num: "08",
     category: "Front-End",
     title: "Stranger Things",
     description:
@@ -119,7 +108,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mundo-Invertido",
   },
   {
-    num: "10",
+    num: "09",
     category: "Front-End",
     title: "Mixa Games",
     description:
@@ -135,7 +124,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mixa_Games",
   },
   {
-    num: "11",
+    num: "10",
     category: "Front-End",
     title: "Calculadora",
     description:
@@ -146,7 +135,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_Simples",
   },
   {
-    num: "12",
+    num: "11",
     category: "Front-End",
     title: "Calculadora IMC",
     description:
@@ -162,7 +151,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_IMC",
   },
   {
-    num: "13",
+    num: "12",
     category: "Front-End",
     title: "Gallery Draw",
     description:
@@ -173,7 +162,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Gallery_draw",
   },
   {
-    num: "14",
+    num: "13",
     category: "Front-End",
     title: "Cadastro de Clientes",
     description:
@@ -184,7 +173,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/cadastro_clientes",
   },
   {
-    num: "15",
+    num: "14",
     category: "Front-End",
     title: "Cartão de Visitas",
     description:
@@ -199,7 +188,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Cartao_visitas",
   },
   {
-    num: "16",
+    num: "15",
     category: "Front-End",
     title: "Globalização",
     description:
@@ -210,7 +199,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
   },
   {
-    num: "17",
+    num: "16",
     category: "Full-Stack",
     title: "Cronômetro",
     description:
@@ -221,7 +210,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
   {
-    num: "18",
+    num: "17",
     category: "Full-Stack",
     title: "Sistema Financeiro",
     description:
@@ -232,7 +221,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/sistema_financeiro",
   },
   {
-    num: "19",
+    num: "18",
     category: "Full-Stack",
     title: "Análise de Dados",
     description:
