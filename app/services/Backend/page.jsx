@@ -1,85 +1,271 @@
 "use client";
 
-import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { BsArrowUpRight, BsGithub } from "react-icons/bs";
 
-const backends = [
+const projects = [
   {
-    num: "01",
-    title: "Python",
-    href: "https://portfolio-umber-seven-61.vercel.app/services/Backend/python",
+    id: "01",
+    name: "pycp_pro",
+    type: "CLI • Python",
+    description:
+      "Ferramenta avançada de cópia e sincronização de arquivos com multithreading, hash verification e barra de progresso em tempo real.",
+
+    github:
+      "https://github.com/FelypeDantas/sistema-de-analise-de-dados",
+
+    features: [
+      "ThreadPoolExecutor",
+      "SHA-256 verification",
+      "Directory sync",
+      "Resume support",
+      "Progress bar",
+    ],
+
+    code: `def sync_directories(src,dst,threads,progress):
+
+    src = Path(src)
+    dst = Path(dst)
+
+    dst.mkdir(parents=True,exist_ok=True)
+
+    tasks=[]
+
+    for path in src.rglob("*"):
+
+        if path.is_file():
+
+            rel = path.relative_to(src)
+            target = dst / rel
+
+            if needs_update(path,target):
+
+                target.parent.mkdir(parents=True,exist_ok=True)
+
+                tasks.append((path,target))`,
   },
+
   {
-    num: "02",
-    title: "Java",
-    href: "",
+    id: "02",
+    name: "Sabor Express",
+    type: "Terminal System",
+    description:
+      "Sistema de gerenciamento de restaurantes com cadastro, listagem e alteração dinâmica de estados.",
+
+    github:
+      "https://github.com/FelypeDantas/cronometro_python",
+
+    features: [
+      "CRUD",
+      "Menu interativo",
+      "Fluxo procedural",
+      "Manipulação de listas",
+    ],
+
+    code: `def alterar_estado_restaurante():
+
+    nome_restaurante = input(
+        'Digite o restaurante: '
+    )
+
+    for restaurante in restaurantes:
+
+        if nome_restaurante == restaurante['nome']:
+
+            restaurante['ativo'] = not restaurante['ativo']`,
   },
+
   {
-    num: "03",
-    title: "C#",
-    href: "",
+    id: "03",
+    name: "Bloco de Notas",
+    type: "File Manager",
+    description:
+      "Editor de arquivos em terminal com leitura, escrita e persistência local.",
+
+    github:
+      "https://github.com/FelypeDantas/sistema_financeiro",
+
+    features: [
+      "Leitura de arquivos",
+      "Persistência local",
+      "Multiline input",
+      "Modo append",
+    ],
+
+    code: `def escrever_arquivo(nome_arquivo, conteudo):
+
+    with open(
+        caminho(nome_arquivo),
+        "w",
+        encoding="utf-8"
+    ) as arquivo:
+
+        arquivo.write(conteudo)`,
   },
 ];
 
-const Backends = () => {
+function ProjectCard({ project }) {
   return (
-    <section className="min-h-[80vh] flex items-center py-12 xl:py-0">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.4, duration: 0.4, ease: "easeIn" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16"
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="
+        relative overflow-hidden
+        rounded-3xl border border-white/10
+        bg-white/[0.03]
+        backdrop-blur-sm
+        p-8
+        group
+      "
+    >
+      {/* glow */}
+      <div
+        className="
+          absolute inset-0 opacity-0
+          group-hover:opacity-100
+          transition duration-500
+          bg-[radial-gradient(circle_at_top_right,rgba(0,255,140,0.12),transparent_40%)]
+        "
+      />
+
+      <div className="relative z-10 flex flex-col gap-8">
+        {/* top */}
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <span className="text-accent text-sm tracking-[0.3em] uppercase">
+              {project.type}
+            </span>
+
+            <h2 className="text-4xl font-bold mt-3">
+              {project.name}
+            </h2>
+          </div>
+
+          <span className="text-6xl font-black text-white/10">
+            {project.id}
+          </span>
+        </div>
+
+        {/* desc */}
+        <p className="text-white/60 leading-relaxed max-w-3xl">
+          {project.description}
+        </p>
+
+        {/* features */}
+        <div className="flex flex-wrap gap-3">
+          {project.features.map((feature) => (
+            <span
+              key={feature}
+              className="
+                px-4 py-2 rounded-full
+                bg-white/5 border border-white/10
+                text-sm text-white/70
+              "
+            >
+              {feature}
+            </span>
+          ))}
+        </div>
+
+        {/* code */}
+        <div
+          className="
+            rounded-2xl overflow-hidden
+            border border-white/10
+            bg-[#0d0d0d]
+          "
         >
-          {backends.map((backend) => {
-            const isActive = Boolean(backend.href);
+          <div
+            className="
+              flex items-center gap-2
+              px-4 py-3 border-b border-white/10
+              bg-white/[0.02]
+            "
+          >
+            <div className="w-3 h-3 rounded-full bg-red-400" />
+            <div className="w-3 h-3 rounded-full bg-yellow-400" />
+            <div className="w-3 h-3 rounded-full bg-green-400" />
+          </div>
 
-            return (
-              <div
-                key={backend.title}
-                className="flex flex-col justify-center gap-6 group"
-              >
-                {/* Top */}
-                <div className="flex items-center justify-between">
-                  <span className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition duration-500">
-                    {backend.num}
-                  </span>
+          <pre className="p-6 overflow-x-auto text-sm text-green-400">
+            <code>{project.code}</code>
+          </pre>
+        </div>
 
-                  <Link
-                    href={isActive ? backend.href : "#"}
-                    aria-disabled={!isActive}
-                    aria-label={
-                      isActive
-                        ? `Abrir ${backend.title}`
-                        : `${backend.title} indisponível`
-                    }
-                    className={`
-                      w-[70px] h-[70px] flex items-center justify-center rounded-full
-                      transition duration-500
-                      ${isActive
-                        ? "bg-white hover:bg-accent hover:-rotate-45"
-                        : "bg-white opacity-50 pointer-events-none"}
-                    `}
-                  >
-                    <BsArrowDownRight className="text-primary text-3xl" />
-                  </Link>
-                </div>
+        {/* actions */}
+        <div className="flex items-center gap-4">
+          <Link
+            href={project.github}
+            target="_blank"
+            className="
+              h-14 px-6 rounded-xl
+              bg-accent text-primary
+              flex items-center gap-3
+              font-medium
+              hover:scale-[1.03]
+              transition
+            "
+          >
+            <BsGithub className="text-xl" />
+            Ver código
+          </Link>
 
-                {/* Title */}
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition duration-500">
-                  {backend.title}
-                </h2>
+          <button
+            className="
+              h-14 w-14 rounded-xl
+              border border-white/10
+              flex items-center justify-center
+              hover:border-accent
+              hover:text-accent
+              transition
+            "
+          >
+            <BsArrowUpRight />
+          </button>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
-                {/* Divider */}
-                <div className="border-b border-white/20" />
-              </div>
-            );
-          })}
-        </motion.div>
+export default function BackendPage() {
+  return (
+    <section className="py-24">
+      <div className="container mx-auto">
+        {/* header */}
+        <div className="max-w-3xl mb-20">
+          <span className="text-accent tracking-[0.4em] uppercase text-sm">
+            Backend Engineering
+          </span>
+
+          <h1 className="text-6xl font-bold leading-tight mt-4">
+            Sistemas,
+            automações
+            e ferramentas
+            construídas
+            em Python.
+          </h1>
+
+          <p className="text-white/60 mt-6 leading-relaxed">
+            Mais do que projetos visuais, aqui estão
+            aplicações reais focadas em lógica,
+            automação, terminal e manipulação de dados.
+          </p>
+        </div>
+
+        {/* projects */}
+        <div className="flex flex-col gap-10">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default Backends;
+}
