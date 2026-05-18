@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 import {
   FaBootstrap,
@@ -24,7 +25,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
@@ -41,9 +41,10 @@ import {
 // --------------------------------------------------
 
 const CARD_CLASS =
-  "bg-[#232329] rounded-xl p-6 flex flex-col justify-center gap-3";
+  "bg-[#232329] rounded-2xl p-6 flex flex-col justify-center gap-3 border border-white/5 hover:border-accent/30 transition-all duration-300";
 
-const SECTION_CLASS = "flex flex-col gap-8";
+const SECTION_CLASS =
+  "absolute inset-0 flex flex-col gap-8";
 
 // --------------------------------------------------
 // DATA
@@ -172,11 +173,11 @@ const tabs = [
 function SectionHeader({ title, description }) {
   return (
     <header className="flex flex-col gap-4 text-center xl:text-left">
-      <h2 className="text-4xl font-bold">
+      <h2 className="text-4xl xl:text-5xl font-bold tracking-tight">
         {title}
       </h2>
 
-      <p className="text-white/60 max-w-[600px] mx-auto xl:mx-0">
+      <p className="text-white/60 max-w-[620px] leading-relaxed mx-auto xl:mx-0">
         {description}
       </p>
     </header>
@@ -188,24 +189,26 @@ function Timeline({ items }) {
     <ScrollArea className="h-[420px] pr-4">
       <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {items.map((item) => (
-          <li
+          <motion.li
             key={item.id}
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.2 }}
             className={CARD_CLASS}
           >
-            <span className="text-accent text-sm">
+            <span className="text-accent text-sm font-medium">
               {item.duration}
             </span>
 
-            <h3 className="text-xl font-medium min-h-[56px]">
+            <h3 className="text-xl font-semibold min-h-[56px]">
               {item.title}
             </h3>
 
-            <div className="flex items-center gap-2 text-white/60">
+            <div className="flex items-center gap-3 text-white/60">
               <span className="w-2 h-2 rounded-full bg-accent" />
 
               <p>{item.subtitle}</p>
             </div>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </ScrollArea>
@@ -220,11 +223,20 @@ function SkillsGrid() {
           <li key={skill.id}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="h-[150px] rounded-xl bg-[#232329] flex items-center justify-center cursor-pointer group">
-                  <div className="text-6xl transition-colors group-hover:text-accent">
+                <motion.div
+                  whileHover={{
+                    y: -5,
+                    scale: 1.03,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                  }}
+                  className="h-[150px] rounded-2xl bg-[#232329] border border-white/5 hover:border-accent/30 transition-all duration-300 flex items-center justify-center cursor-pointer group"
+                >
+                  <div className="text-6xl text-white/80 group-hover:text-accent transition-colors duration-300">
                     {skill.icon}
                   </div>
-                </div>
+                </motion.div>
               </TooltipTrigger>
 
               <TooltipContent>
@@ -238,100 +250,133 @@ function SkillsGrid() {
   );
 }
 
+function AboutGrid() {
+  return (
+    <ul className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      {about.map((item) => (
+        <li
+          key={item.id}
+          className="flex flex-col gap-1"
+        >
+          <span className="text-white/40 text-sm uppercase tracking-wider">
+            {item.label}
+          </span>
+
+          <span className="text-lg font-medium">
+            {item.value}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// --------------------------------------------------
+// CONTENT
+// --------------------------------------------------
+
+function TabContent({ currentTab }) {
+  const contentMap = {
+    experience: {
+      title: "Minha Experiência",
+      description:
+        "Minha jornada envolve estágio, projetos próprios e evolução constante no desenvolvimento web.",
+      content: <Timeline items={experiences} />,
+    },
+
+    education: {
+      title: "Educação",
+      description:
+        "Formação acadêmica combinada com aprendizado contínuo em plataformas digitais.",
+      content: <Timeline items={education} />,
+    },
+
+    skills: {
+      title: "Skills",
+      description:
+        "Tecnologias que uso para transformar ideias em realidade.",
+      content: <SkillsGrid />,
+    },
+
+    about: {
+      title: "Sobre mim",
+      description:
+        "Desenvolvedor focado em criar experiências digitais intuitivas.",
+      content: <AboutGrid />,
+    },
+  };
+
+  const current = contentMap[currentTab];
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={currentTab}
+        initial={{
+          opacity: 0,
+          y: 12,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        exit={{
+          opacity: 0,
+          y: -12,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className={SECTION_CLASS}
+      >
+        <SectionHeader
+          title={current.title}
+          description={current.description}
+        />
+
+        {current.content}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 // --------------------------------------------------
 // MAIN
 // --------------------------------------------------
 
 export default function Resume() {
+  const [currentTab, setCurrentTab] =
+    useState("experience");
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
         duration: 0.4,
-        delay: 0.2,
       }}
       className="min-h-[80vh] py-12 flex items-center"
     >
       <div className="container mx-auto">
         <Tabs
-          defaultValue="experience"
+          value={currentTab}
+          onValueChange={setCurrentTab}
           className="flex flex-col xl:flex-row gap-14"
         >
-          <TabsList className="w-full xl:max-w-[320px] flex flex-col gap-4">
+          <TabsList className="w-full xl:max-w-[320px] flex flex-col gap-4 bg-transparent h-auto p-0">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
+                className="w-full h-[56px] rounded-xl text-base transition-all duration-300 data-[state=active]:bg-accent data-[state=active]:text-primary"
               >
                 {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
 
-          <div className="w-full min-h-[520px]">
-            <TabsContent
-              value="experience"
-              className={SECTION_CLASS}
-            >
-              <SectionHeader
-                title="Minha Experiência"
-                description="Minha jornada envolve estágio, projetos próprios e evolução constante no desenvolvimento web."
-              />
-
-              <Timeline items={experiences} />
-            </TabsContent>
-
-            <TabsContent
-              value="education"
-              className={SECTION_CLASS}
-            >
-              <SectionHeader
-                title="Educação"
-                description="Formação acadêmica combinada com aprendizado contínuo em plataformas digitais."
-              />
-
-              <Timeline items={education} />
-            </TabsContent>
-
-            <TabsContent
-              value="skills"
-              className={SECTION_CLASS}
-            >
-              <SectionHeader
-                title="Skills"
-                description="Tecnologias que uso para transformar ideias em realidade."
-              />
-
-              <SkillsGrid />
-            </TabsContent>
-
-            <TabsContent
-              value="about"
-              className={SECTION_CLASS}
-            >
-              <SectionHeader
-                title="Sobre mim"
-                description="Desenvolvedor focado em criar experiências digitais intuitivas."
-              />
-
-              <ul className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                {about.map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex flex-col gap-1"
-                  >
-                    <span className="text-white/50 text-sm">
-                      {item.label}
-                    </span>
-
-                    <span className="text-lg">
-                      {item.value}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </TabsContent>
+          <div className="relative w-full min-h-[520px] overflow-hidden">
+            <TabContent currentTab={currentTab} />
           </div>
         </Tabs>
       </div>
