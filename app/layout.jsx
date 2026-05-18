@@ -1,39 +1,82 @@
 import { JetBrains_Mono } from "next/font/google";
+
 import "./globals.css";
 
 import Header from "@/components/Header";
+import MouseGlow from "@/components/MouseGlow";
 import PageTransition from "@/components/PageTransition";
 import StairEffect from "@/components/StairEffect";
 
+// --------------------------------------------------
+// FONT
+// --------------------------------------------------
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+  ],
+
   variable: "--font-jetbrains-mono",
-  display: "swap", // melhora performance de carregamento
+
+  display: "swap",
 });
+
+// --------------------------------------------------
+// METADATA
+// --------------------------------------------------
 
 export const metadata = {
   title: "Meu Portfólio",
-  description: "Portfólio desenvolvido com Next.js mostrando projetos e habilidades.",
+
+  description:
+    "Portfólio desenvolvido com Next.js mostrando projetos e habilidades.",
 };
 
-export default function RootLayout({ children }) {
+// --------------------------------------------------
+// ROOT LAYOUT
+// --------------------------------------------------
+
+export default function RootLayout({
+  children,
+}) {
   return (
-    <html lang="pt-BR">
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+    >
       <body
         className={`
           ${jetbrainsMono.variable}
+          relative
+          overflow-x-hidden
+          bg-primary
           font-sans
+          text-white
           antialiased
         `}
       >
-        <Header />
+        {/* Glow futurista */}
+        <MouseGlow />
 
-        <StairEffect />
+        {/* Camada principal */}
+        <div className="relative z-10">
+          <Header />
 
-        <PageTransition>
-          {children}
-        </PageTransition>
+          <StairEffect />
+
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </div>
       </body>
     </html>
   );
