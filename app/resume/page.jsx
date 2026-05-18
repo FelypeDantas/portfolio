@@ -44,7 +44,7 @@ const CARD_CLASS =
   "bg-[#232329] rounded-2xl p-6 flex flex-col justify-center gap-3 border border-white/5 hover:border-accent/30 transition-all duration-300";
 
 const SECTION_CLASS =
-  "absolute inset-0 flex flex-col gap-8";
+  "absolute inset-0 flex flex-col gap-8 overflow-y-auto pr-2";
 
 // --------------------------------------------------
 // DATA
@@ -375,7 +375,7 @@ export default function Resume() {
             ))}
           </TabsList>
 
-          <div className="relative w-full min-h-[520px] overflow-hidden">
+          <div className="relative w-full h-[620px]">
             <TabContent currentTab={currentTab} />
           </div>
         </Tabs>
