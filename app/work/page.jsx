@@ -14,14 +14,14 @@ import {
   BsGithub,
 } from "react-icons/bs";
 
-import WorkSliderBtns from "@/components/WorkSliderBtns";
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
+import WorkSliderBtns from "@/components/WorkSliderBtns";
 
 import { projects } from "@/data/project";
 
@@ -35,7 +35,7 @@ h-[58px]
 rounded-full
 border
 border-white/10
-bg-white/5
+bg-white/[0.04]
 hover:bg-accent
 hover:text-primary
 transition-all
@@ -43,22 +43,22 @@ duration-300
 flex
 items-center
 justify-center
-backdrop-blur-md
+backdrop-blur-xl
 group
 `;
 
-const CARD_CLASS = `
+const PANEL_CLASS = `
 relative
 overflow-hidden
-rounded-3xl
+rounded-[34px]
 border
 border-white/10
-bg-[#1c1c22]
-shadow-2xl
+bg-[#16161d]/80
+backdrop-blur-xl
 `;
 
 // --------------------------------------------------
-// BUTTONS
+// LINKS
 // --------------------------------------------------
 
 function ProjectLinks({
@@ -76,9 +76,18 @@ function ProjectLinks({
                 href={live}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Abrir ${title}`}
                 className={BUTTON_CLASS}
               >
-                <BsArrowUpRight className="text-2xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                <BsArrowUpRight
+                  className="
+                    text-2xl
+                    transition-transform
+                    duration-300
+                    group-hover:-translate-y-1
+                    group-hover:translate-x-1
+                  "
+                />
               </Link>
             </TooltipTrigger>
 
@@ -95,6 +104,7 @@ function ProjectLinks({
                 href={github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Github ${title}`}
                 className={BUTTON_CLASS}
               >
                 <BsGithub className="text-2xl" />
@@ -125,12 +135,13 @@ function StackList({ stack = [] }) {
             px-4
             py-2
             rounded-full
-            bg-white/5
             border
             border-white/10
+            bg-white/[0.03]
             text-sm
             text-accent
-            backdrop-blur-sm
+            backdrop-blur-md
+            shadow-lg
           "
         >
           {item.name}
@@ -150,33 +161,33 @@ function ProjectInfo({ project }) {
       key={project.num}
       initial={{
         opacity: 0,
-        y: 20,
+        y: 18,
       }}
       animate={{
         opacity: 1,
         y: 0,
       }}
       transition={{
-        duration: 0.35,
+        duration: 0.4,
       }}
       className="
         flex
         flex-col
         justify-between
-        gap-10
         h-full
+        gap-10
       "
     >
-      <div className="space-y-7">
+      <div className="space-y-8">
 
         {/* NUMBER */}
         <div className="flex items-center gap-5">
           <span
             className="
-              text-[80px]
-              xl:text-[120px]
-              font-extrabold
+              text-[90px]
+              xl:text-[140px]
               leading-none
+              font-extrabold
               text-transparent
               text-outline
               opacity-40
@@ -185,14 +196,22 @@ function ProjectInfo({ project }) {
             {project.num}
           </span>
 
-          <div className="h-[2px] flex-1 bg-gradient-to-r from-accent to-transparent" />
+          <div
+            className="
+              h-[2px]
+              flex-1
+              bg-gradient-to-r
+              from-accent
+              to-transparent
+            "
+          />
         </div>
 
         {/* CATEGORY */}
         <span
           className="
             uppercase
-            tracking-[0.35em]
+            tracking-[0.4em]
             text-sm
             text-accent
           "
@@ -201,25 +220,26 @@ function ProjectInfo({ project }) {
         </span>
 
         {/* TITLE */}
-        <h2
+        <h1
           className="
             text-5xl
+            md:text-6xl
             xl:text-7xl
             font-bold
-            leading-[0.95]
+            leading-[0.92]
             tracking-tight
           "
         >
           {project.title}
-        </h2>
+        </h1>
 
         {/* DESCRIPTION */}
         <p
           className="
-            text-white/60
-            text-lg
-            leading-relaxed
             max-w-[520px]
+            text-lg
+            text-white/60
+            leading-relaxed
           "
         >
           {project.description}
@@ -231,7 +251,7 @@ function ProjectInfo({ project }) {
 
       {/* FOOTER */}
       <div className="space-y-6">
-        <div className="w-full h-px bg-white/10" />
+        <div className="h-px w-full bg-white/10" />
 
         <ProjectLinks
           live={project.live}
@@ -251,48 +271,92 @@ function ProjectSlide({ project }) {
   return (
     <div
       className={`
-        ${CARD_CLASS}
-        h-[320px]
-        md:h-[420px]
-        xl:h-[620px]
+        ${PANEL_CLASS}
+
+        h-[340px]
+        md:h-[520px]
+        xl:h-[700px]
+
+        flex
+        items-center
+        justify-center
+
+        p-6
+        xl:p-10
       `}
     >
-      {/* glow */}
+      {/* Ambient Glow */}
       <div
         className="
           absolute
           inset-0
-          bg-gradient-to-tr
-          from-accent/20
-          via-transparent
-          to-transparent
-          z-10
+          bg-[radial-gradient(circle_at_center,_rgba(0,255,170,0.16),transparent_65%)]
           pointer-events-none
         "
       />
 
-      {/* dark overlay */}
+      {/* Grid */}
       <div
         className="
           absolute
           inset-0
-          bg-black/20
-          z-10
+          opacity-[0.03]
+          bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)]
+          bg-[size:42px_42px]
         "
       />
 
-      {/* image */}
-      <Image
-        src={project.image}
-        alt={project.title}
-        fill
-        priority
+      {/* Noise */}
+      <div
         className="
-          object-cover
-          object-top
-          transition-transform
-          duration-700
-          hover:scale-105
+          absolute
+          inset-0
+          opacity-[0.025]
+          mix-blend-soft-light
+          bg-[url('/assets/noise.png')]
+        "
+      />
+
+      {/* Image */}
+      <motion.div
+        whileHover={{
+          scale: 1.02,
+        }}
+        transition={{
+          duration: 0.4,
+        }}
+        className="
+          relative
+          z-20
+          w-full
+          h-full
+          flex
+          items-center
+          justify-center
+        "
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          priority
+          className="
+            object-contain
+            drop-shadow-[0_0_60px_rgba(0,255,170,0.18)]
+          "
+        />
+      </motion.div>
+
+      {/* Overlay */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-black/30
+          via-transparent
+          to-transparent
+          pointer-events-none
         "
       />
     </div>
@@ -327,23 +391,33 @@ export default function Work() {
         duration: 0.5,
       }}
       className="
+        relative
         min-h-screen
         flex
         items-center
-        py-20
         overflow-hidden
+        py-20
       "
     >
+      {/* BACKGROUND AMBIENT */}
+      <div
+        className="
+          absolute
+          inset-0
+          -z-10
+          bg-[radial-gradient(circle_at_top,rgba(0,255,170,0.08),transparent_35%)]
+        "
+      />
+
       <div className="container mx-auto px-4">
         <div
           className="
             grid
-            xl:grid-cols-[420px_1fr]
-            gap-14
+            xl:grid-cols-[420px_minmax(0,1fr)]
+            gap-16
             items-center
           "
         >
-
           {/* LEFT */}
           <div className="order-2 xl:order-1">
             <ProjectInfo project={currentProject} />
@@ -351,11 +425,24 @@ export default function Work() {
 
           {/* RIGHT */}
           <div className="order-1 xl:order-2 relative">
+
+            {/* BIG GLOW */}
+            <div
+              className="
+                absolute
+                inset-0
+                -z-10
+                bg-accent/10
+                blur-[140px]
+                rounded-full
+              "
+            />
+
             <Swiper
-              spaceBetween={30}
+              spaceBetween={40}
               slidesPerView={1}
               onSlideChange={handleSlideChange}
-              className="w-full"
+              className="w-full max-w-[1200px]"
             >
               {projects.map((project) => (
                 <SwiperSlide key={project.num}>
@@ -366,20 +453,20 @@ export default function Work() {
               <WorkSliderBtns
                 containerStyles="
                   absolute
-                  z-30
                   bottom-6
                   right-6
+                  z-30
                   flex
                   gap-3
                 "
                 btnStyles="
-                  w-[54px]
-                  h-[54px]
+                  w-[56px]
+                  h-[56px]
                   rounded-full
                   border
                   border-white/10
                   bg-black/40
-                  backdrop-blur-md
+                  backdrop-blur-xl
                   hover:bg-accent
                   hover:text-primary
                   transition-all
@@ -390,20 +477,7 @@ export default function Work() {
                 "
               />
             </Swiper>
-
-            {/* ambient glow */}
-            <div
-              className="
-                absolute
-                -z-10
-                inset-0
-                bg-accent/10
-                blur-[120px]
-                rounded-full
-              "
-            />
           </div>
-
         </div>
       </div>
     </motion.section>
