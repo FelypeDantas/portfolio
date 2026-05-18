@@ -27,7 +27,7 @@ const services = [
     title: "Data Analyst",
     description:
       "Coleta, organização e análise de dados para gerar insights e apoiar decisões estratégicas.",
-    href: null,
+    href: "/services/data_analytics",
   },
   {
     id: "backend",
