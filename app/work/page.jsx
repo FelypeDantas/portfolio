@@ -1,127 +1,283 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState, useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
+
+import Link from "next/link";
+import Image from "next/image";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+
+import {
+  BsArrowUpRight,
+  BsGithub,
+} from "react-icons/bs";
+
+import WorkSliderBtns from "@/components/WorkSliderBtns";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@radix-ui/react-tooltip";
-import Link from "next/link";
-import Image from "next/image";
-import WorkSliderBtns from "@/components/WorkSliderBtns";
+} from "@/components/ui/tooltip";
+
 import { projects } from "@/data/project";
 
-// 🔹 Componente reutilizável de botão com tooltip
-const IconButton = ({ href, icon: Icon, label }) => (
-  <Link href={href} target="_blank">
+// --------------------------------------------------
+// STYLES
+// --------------------------------------------------
+
+const SECTION_CLASS =
+  "min-h-[100vh] flex items-center py-16 xl:py-0 overflow-hidden";
+
+const CARD_CLASS =
+  "relative overflow-hidden rounded-3xl border border-white/10 bg-[#1c1c22]/70 backdrop-blur-sm";
+
+const BUTTON_CLASS =
+  "w-[62px] h-[62px] rounded-full border border-white/10 bg-white/5 hover:bg-accent hover:text-primary transition-all duration-300 flex items-center justify-center group";
+
+// --------------------------------------------------
+// COMPONENTS
+// --------------------------------------------------
+
+function ProjectLinks({
+  live,
+  github,
+  title,
+}) {
+  return (
     <TooltipProvider delayDuration={100}>
-      <Tooltip>
-        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-          <Icon className="text-white text-3xl group-hover:text-accent transition" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{label}</p>
-        </TooltipContent>
-      </Tooltip>
+      <div className="flex items-center gap-4">
+        {live && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href={live}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir projeto ${title}`}
+                className={BUTTON_CLASS}
+              >
+                <BsArrowUpRight className="text-2xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+              </Link>
+            </TooltipTrigger>
+
+            <TooltipContent>
+              <p>Projeto ao vivo</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+
+        {github && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir repositório ${title}`}
+                className={BUTTON_CLASS}
+              >
+                <BsGithub className="text-2xl" />
+              </Link>
+            </TooltipTrigger>
+
+            <TooltipContent>
+              <p>Ver código</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
     </TooltipProvider>
-  </Link>
-);
+  );
+}
 
-// 🔹 Info do projeto
-const ProjectInfo = ({ project }) => (
-  <div className="flex flex-col gap-[30px] h-full">
-    <div className="text-8xl font-extrabold text-transparent text-outline">
-      {project.num}
-    </div>
-
-    <h2 className="text-[42px] font-bold text-white capitalize">
-      Projeto {project.category}
-    </h2>
-
-    <p className="text-white/60">{project.description}</p>
-
-    <ul className="flex flex-wrap gap-2">
-      {project.stack.map((item, i) => (
-        <li key={i} className="text-accent text-lg">
-          {item.name}
-          {i !== project.stack.length - 1 && ","}
+function StackList({ stack = [] }) {
+  return (
+    <ul className="flex flex-wrap gap-3">
+      {stack.map((tech, index) => (
+        <li
+          key={`${tech.name}-${index}`}
+          className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-accent"
+        >
+          {tech.name}
         </li>
       ))}
     </ul>
+  );
+}
 
-    <div className="border border-white/20" />
+function ProjectInfo({ project }) {
+  return (
+    <motion.div
+      key={project.num}
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.35,
+      }}
+      className="flex flex-col justify-between gap-8 h-full"
+    >
+      <div className="space-y-6">
+        {/* NUMBER */}
+        <div className="flex items-center gap-4">
+          <span className="text-[90px] xl:text-[130px] leading-none font-extrabold text-transparent text-outline">
+            {project.num}
+          </span>
 
-    <div className="flex items-center gap-4">
-      <IconButton
-        href={project.live}
-        icon={BsArrowUpRight}
-        label="Projeto ao vivo"
-      />
-      <IconButton
-        href={project.github}
-        icon={BsGithub}
-        label="Repositório do GitHub"
+          <div className="h-[2px] w-full bg-gradient-to-r from-accent/60 to-transparent" />
+        </div>
+
+        {/* TITLE */}
+        <div className="space-y-3">
+          <span className="text-accent uppercase tracking-[0.3em] text-sm">
+            {project.category}
+          </span>
+
+          <h2 className="text-4xl xl:text-6xl font-bold leading-tight">
+            {project.title}
+          </h2>
+        </div>
+
+        {/* DESCRIPTION */}
+        <p className="text-white/60 text-lg leading-relaxed max-w-[620px]">
+          {project.description}
+        </p>
+
+        {/* STACK */}
+        <StackList stack={project.stack} />
+      </div>
+
+      {/* ACTIONS */}
+      <div className="flex flex-col gap-6">
+        <div className="w-full h-px bg-white/10" />
+
+        <ProjectLinks
+          live={project.live}
+          github={project.github}
+          title={project.title}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+function ProjectSlide({ project }) {
+  return (
+    <div
+      className={`
+        ${CARD_CLASS}
+        h-[320px]
+        sm:h-[420px]
+        xl:h-[520px]
+      `}
+    >
+      {/* glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-transparent z-10 pointer-events-none" />
+
+      {/* overlay */}
+      <div className="absolute inset-0 bg-black/20 z-10" />
+
+      <Image
+        src={project.image}
+        alt={project.title}
+        fill
+        priority
+        className="
+          object-cover
+          transition-transform
+          duration-700
+          hover:scale-105
+        "
       />
     </div>
-  </div>
-);
+  );
+}
 
-// 🔹 Slide individual
-const ProjectSlide = ({ project }) => (
-  <div className="h-[460px] relative flex justify-center items-center bg-pink-50/20">
-    <div className="absolute inset-0 bg-black/10 z-10" />
-    <Image
-      src={project.image}
-      fill
-      className="object-cover"
-      alt={project.title}
-    />
-  </div>
-);
+// --------------------------------------------------
+// MAIN
+// --------------------------------------------------
 
-const Work = () => {
-  const [project, setProject] = useState(projects[0]);
+export default function Work() {
+  const [currentIndex, setCurrentIndex] =
+    useState(0);
 
-  const handleSlideChange = useCallback((swiper) => {
-    setProject(projects[swiper.activeIndex]);
-  }, []);
+  const currentProject = useMemo(
+    () => projects[currentIndex],
+    [currentIndex]
+  );
+
+  const handleSlideChange = useCallback(
+    (swiper) => {
+      setCurrentIndex(swiper.activeIndex);
+    },
+    []
+  );
 
   return (
     <motion.section
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.4 } }}
-      className="min-h-[80vh] flex flex-col justify-center py-12"
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.5,
+      }}
+      className={SECTION_CLASS}
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-[30px]">
+      <div className="container mx-auto px-4">
+        <div className="grid xl:grid-cols-[1fr_1.1fr] gap-14 items-center">
           
-          {/* 🔹 Info */}
-          <div className="w-full xl:w-1/2 flex flex-col justify-between order-2 xl:order-none">
-            <ProjectInfo project={project} />
+          {/* LEFT */}
+          <div className="order-2 xl:order-1 min-h-[520px] flex">
+            <ProjectInfo project={currentProject} />
           </div>
 
-          {/* 🔹 Slider */}
-          <div className="w-full xl:w-1/2">
+          {/* RIGHT */}
+          <div className="order-1 xl:order-2">
             <Swiper
-              spaceBetween={30}
+              spaceBetween={24}
               slidesPerView={1}
               onSlideChange={handleSlideChange}
-              className="xl:h-[520px] mb-12"
+              className="w-full"
             >
-              {projects.map((item) => (
-                <SwiperSlide key={item.num}>
-                  <ProjectSlide project={item} />
+              {projects.map((project) => (
+                <SwiperSlide key={project.num}>
+                  <ProjectSlide project={project} />
                 </SwiperSlide>
               ))}
 
               <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition"
+                containerStyles="
+                  flex
+                  gap-3
+                  absolute
+                  z-20
+                  bottom-5
+                  right-5
+                "
+                btnStyles="
+                  w-[52px]
+                  h-[52px]
+                  rounded-full
+                  bg-black/50
+                  backdrop-blur-md
+                  border
+                  border-white/10
+                  hover:bg-accent
+                  hover:text-primary
+                  transition-all
+                  duration-300
+                  flex
+                  items-center
+                  justify-center
+                "
               />
             </Swiper>
           </div>
@@ -130,6 +286,4 @@ const Work = () => {
       </div>
     </motion.section>
   );
-};
-
-export default Work;
+}
