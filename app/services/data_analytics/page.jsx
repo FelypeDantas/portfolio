@@ -226,7 +226,7 @@ export default function DataAnalysisPage() {
           <div className="flex flex-wrap gap-4">
             
             <Link
-              href="SEU_GITHUB_AQUI"
+              href="https://github.com/FelypeDantas/ficha-tecnica-dark-roses"
               target="_blank"
               className="h-[58px] px-8 rounded-2xl bg-accent text-primary font-medium flex items-center gap-3 hover:scale-[1.03] transition"
             >
