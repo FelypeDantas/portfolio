@@ -29,17 +29,36 @@ import { projects } from "@/data/project";
 // STYLES
 // --------------------------------------------------
 
-const SECTION_CLASS =
-  "min-h-[100vh] flex items-center py-16 xl:py-0 overflow-hidden";
+const BUTTON_CLASS = `
+w-[58px]
+h-[58px]
+rounded-full
+border
+border-white/10
+bg-white/5
+hover:bg-accent
+hover:text-primary
+transition-all
+duration-300
+flex
+items-center
+justify-center
+backdrop-blur-md
+group
+`;
 
-const CARD_CLASS =
-  "relative overflow-hidden rounded-3xl border border-white/10 bg-[#1c1c22]/70 backdrop-blur-sm";
-
-const BUTTON_CLASS =
-  "w-[62px] h-[62px] rounded-full border border-white/10 bg-white/5 hover:bg-accent hover:text-primary transition-all duration-300 flex items-center justify-center group";
+const CARD_CLASS = `
+relative
+overflow-hidden
+rounded-3xl
+border
+border-white/10
+bg-[#1c1c22]
+shadow-2xl
+`;
 
 // --------------------------------------------------
-// COMPONENTS
+// BUTTONS
 // --------------------------------------------------
 
 function ProjectLinks({
@@ -57,7 +76,6 @@ function ProjectLinks({
                 href={live}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Abrir projeto ${title}`}
                 className={BUTTON_CLASS}
               >
                 <BsArrowUpRight className="text-2xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
@@ -65,7 +83,7 @@ function ProjectLinks({
             </TooltipTrigger>
 
             <TooltipContent>
-              <p>Projeto ao vivo</p>
+              Projeto ao vivo
             </TooltipContent>
           </Tooltip>
         )}
@@ -77,7 +95,6 @@ function ProjectLinks({
                 href={github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Abrir repositório ${title}`}
                 className={BUTTON_CLASS}
               >
                 <BsGithub className="text-2xl" />
@@ -85,7 +102,7 @@ function ProjectLinks({
             </TooltipTrigger>
 
             <TooltipContent>
-              <p>Ver código</p>
+              Ver código
             </TooltipContent>
           </Tooltip>
         )}
@@ -94,20 +111,38 @@ function ProjectLinks({
   );
 }
 
+// --------------------------------------------------
+// STACK
+// --------------------------------------------------
+
 function StackList({ stack = [] }) {
   return (
     <ul className="flex flex-wrap gap-3">
-      {stack.map((tech, index) => (
+      {stack.map((item, index) => (
         <li
-          key={`${tech.name}-${index}`}
-          className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-accent"
+          key={`${item.name}-${index}`}
+          className="
+            px-4
+            py-2
+            rounded-full
+            bg-white/5
+            border
+            border-white/10
+            text-sm
+            text-accent
+            backdrop-blur-sm
+          "
         >
-          {tech.name}
+          {item.name}
         </li>
       ))}
     </ul>
   );
 }
+
+// --------------------------------------------------
+// INFO
+// --------------------------------------------------
 
 function ProjectInfo({ project }) {
   return (
@@ -124,31 +159,69 @@ function ProjectInfo({ project }) {
       transition={{
         duration: 0.35,
       }}
-      className="flex flex-col justify-between gap-8 h-full"
+      className="
+        flex
+        flex-col
+        justify-between
+        gap-10
+        h-full
+      "
     >
-      <div className="space-y-6">
+      <div className="space-y-7">
+
         {/* NUMBER */}
-        <div className="flex items-center gap-4">
-          <span className="text-[90px] xl:text-[130px] leading-none font-extrabold text-transparent text-outline">
+        <div className="flex items-center gap-5">
+          <span
+            className="
+              text-[80px]
+              xl:text-[120px]
+              font-extrabold
+              leading-none
+              text-transparent
+              text-outline
+              opacity-40
+            "
+          >
             {project.num}
           </span>
 
-          <div className="h-[2px] w-full bg-gradient-to-r from-accent/60 to-transparent" />
+          <div className="h-[2px] flex-1 bg-gradient-to-r from-accent to-transparent" />
         </div>
+
+        {/* CATEGORY */}
+        <span
+          className="
+            uppercase
+            tracking-[0.35em]
+            text-sm
+            text-accent
+          "
+        >
+          {project.category}
+        </span>
 
         {/* TITLE */}
-        <div className="space-y-3">
-          <span className="text-accent uppercase tracking-[0.3em] text-sm">
-            {project.category}
-          </span>
-
-          <h2 className="text-4xl xl:text-6xl font-bold leading-tight">
-            {project.title}
-          </h2>
-        </div>
+        <h2
+          className="
+            text-5xl
+            xl:text-7xl
+            font-bold
+            leading-[0.95]
+            tracking-tight
+          "
+        >
+          {project.title}
+        </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-white/60 text-lg leading-relaxed max-w-[620px]">
+        <p
+          className="
+            text-white/60
+            text-lg
+            leading-relaxed
+            max-w-[520px]
+          "
+        >
           {project.description}
         </p>
 
@@ -156,8 +229,8 @@ function ProjectInfo({ project }) {
         <StackList stack={project.stack} />
       </div>
 
-      {/* ACTIONS */}
-      <div className="flex flex-col gap-6">
+      {/* FOOTER */}
+      <div className="space-y-6">
         <div className="w-full h-px bg-white/10" />
 
         <ProjectLinks
@@ -170,22 +243,45 @@ function ProjectInfo({ project }) {
   );
 }
 
+// --------------------------------------------------
+// SLIDE
+// --------------------------------------------------
+
 function ProjectSlide({ project }) {
   return (
     <div
       className={`
         ${CARD_CLASS}
         h-[320px]
-        sm:h-[420px]
-        xl:h-[520px]
+        md:h-[420px]
+        xl:h-[620px]
       `}
     >
       {/* glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-transparent z-10 pointer-events-none" />
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-tr
+          from-accent/20
+          via-transparent
+          to-transparent
+          z-10
+          pointer-events-none
+        "
+      />
 
-      {/* overlay */}
-      <div className="absolute inset-0 bg-black/20 z-10" />
+      {/* dark overlay */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-black/20
+          z-10
+        "
+      />
 
+      {/* image */}
       <Image
         src={project.image}
         alt={project.title}
@@ -193,6 +289,7 @@ function ProjectSlide({ project }) {
         priority
         className="
           object-cover
+          object-top
           transition-transform
           duration-700
           hover:scale-105
@@ -229,20 +326,33 @@ export default function Work() {
       transition={{
         duration: 0.5,
       }}
-      className={SECTION_CLASS}
+      className="
+        min-h-screen
+        flex
+        items-center
+        py-20
+        overflow-hidden
+      "
     >
       <div className="container mx-auto px-4">
-        <div className="grid xl:grid-cols-[1fr_1.1fr] gap-14 items-center">
-          
+        <div
+          className="
+            grid
+            xl:grid-cols-[420px_1fr]
+            gap-14
+            items-center
+          "
+        >
+
           {/* LEFT */}
-          <div className="order-2 xl:order-1 min-h-[520px] flex">
+          <div className="order-2 xl:order-1">
             <ProjectInfo project={currentProject} />
           </div>
 
           {/* RIGHT */}
-          <div className="order-1 xl:order-2">
+          <div className="order-1 xl:order-2 relative">
             <Swiper
-              spaceBetween={24}
+              spaceBetween={30}
               slidesPerView={1}
               onSlideChange={handleSlideChange}
               className="w-full"
@@ -255,21 +365,21 @@ export default function Work() {
 
               <WorkSliderBtns
                 containerStyles="
+                  absolute
+                  z-30
+                  bottom-6
+                  right-6
                   flex
                   gap-3
-                  absolute
-                  z-20
-                  bottom-5
-                  right-5
                 "
                 btnStyles="
-                  w-[52px]
-                  h-[52px]
+                  w-[54px]
+                  h-[54px]
                   rounded-full
-                  bg-black/50
-                  backdrop-blur-md
                   border
                   border-white/10
+                  bg-black/40
+                  backdrop-blur-md
                   hover:bg-accent
                   hover:text-primary
                   transition-all
@@ -280,6 +390,18 @@ export default function Work() {
                 "
               />
             </Swiper>
+
+            {/* ambient glow */}
+            <div
+              className="
+                absolute
+                -z-10
+                inset-0
+                bg-accent/10
+                blur-[120px]
+                rounded-full
+              "
+            />
           </div>
 
         </div>
