@@ -13,7 +13,7 @@ const projects = [
       "Ferramenta avançada de cópia e sincronização de arquivos com multithreading, hash verification e barra de progresso em tempo real.",
 
     github:
-      "https://github.com/FelypeDantas/sistema-de-analise-de-dados",
+      "https://github.com/FelypeDantas/funcao_copiar",
 
     features: [
       "ThreadPoolExecutor",
@@ -54,7 +54,7 @@ const projects = [
       "Sistema de gerenciamento de restaurantes com cadastro, listagem e alteração dinâmica de estados.",
 
     github:
-      "https://github.com/FelypeDantas/cronometro_python",
+      "https://github.com/FelypeDantas/sabor_express",
 
     features: [
       "CRUD",
@@ -84,7 +84,7 @@ const projects = [
       "Editor de arquivos em terminal com leitura, escrita e persistência local.",
 
     github:
-      "https://github.com/FelypeDantas/sistema_financeiro",
+      "https://github.com/FelypeDantas/arquivos_no_terminal",
 
     features: [
       "Leitura de arquivos",
