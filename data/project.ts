@@ -13,17 +13,6 @@ export const projects: Project[] = [
   {
     num: "01",
     category: "Front-End",
-    title: "Relógio Digital",
-    description:
-      "Relógio digital interativo com personalização de cores e persistência local.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
-    image: "/assets/work/thumb1.png",
-    live: "https://felypedantas.github.io/Relogio_JS/",
-    github: "https://github.com/FelypeDantas/Relogio_JS",
-  },
-  {
-    num: "02",
-    category: "Front-End",
     title: "Fokus",
     description:
       "Interface moderna com animações e interações dinâmicas focadas em UX.",
@@ -33,7 +22,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Fokus_Complete",
   },
   {
-    num: "03",
+    num: "02",
     category: "Front-End",
     title: "Serenatto Café",
     description:
@@ -49,7 +38,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Serenatto_Cafe",
   },
   {
-    num: "04",
+    num: "03",
     category: "Front-End",
     title: "Spa Calmaria",
     description:
@@ -60,7 +49,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Spa-Calmaria",
   },
   {
-    num: "05",
+    num: "04",
     category: "Front-End",
     title: "Lista de Compras",
     description:
@@ -71,7 +60,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Lista_Compras",
   },
   {
-    num: "06",
+    num: "05",
     category: "Full-Stack",
     title: "Svelte Perfis",
     description:
@@ -82,7 +71,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/svelte-perfis",
   },
   {
-    num: "07",
+    num: "06",
     category: "Front-End",
     title: "Cuidados de Verão",
     description:
@@ -97,7 +86,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Site_Verao",
   },
   {
-    num: "08",
+    num: "07",
     category: "Front-End",
     title: "Stranger Things",
     description:
@@ -108,7 +97,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mundo-Invertido",
   },
   {
-    num: "09",
+    num: "08",
     category: "Front-End",
     title: "Mixa Games",
     description:
@@ -124,7 +113,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mixa_Games",
   },
   {
-    num: "10",
+    num: "09",
     category: "Front-End",
     title: "Calculadora",
     description:
@@ -135,7 +124,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_Simples",
   },
   {
-    num: "11",
+    num: "10",
     category: "Front-End",
     title: "Calculadora IMC",
     description:
@@ -151,7 +140,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_IMC",
   },
   {
-    num: "12",
+    num: "11",
     category: "Front-End",
     title: "Gallery Draw",
     description:
@@ -162,7 +151,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Gallery_draw",
   },
   {
-    num: "13",
+    num: "12",
     category: "Front-End",
     title: "Cartão de Visitas",
     description:
@@ -177,7 +166,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Cartao_visitas",
   },
   {
-    num: "14",
+    num: "13",
     category: "Front-End",
     title: "Globalização",
     description:
@@ -188,7 +177,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
   },
   {
-    num: "15",
+    num: "14",
     category: "Full-Stack",
     title: "Cronômetro",
     description:
@@ -199,7 +188,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
   {
-    num: "16",
+    num: "15",
     category: "Full-Stack",
     title: "Sistema Financeiro",
     description:
@@ -210,7 +199,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/sistema_financeiro",
   },
   {
-    num: "17",
+    num: "16",
     category: "Full-Stack",
     title: "Análise de Dados",
     description:
