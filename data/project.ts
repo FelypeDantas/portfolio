@@ -62,21 +62,6 @@ export const projects: Project[] = [
   {
     num: "05",
     category: "Front-End",
-    title: "Cuidados de Verão",
-    description:
-      "Site com SVG e design visual focado em dicas sazonais.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-    ],
-    image: "/assets/work/thumb8.png",
-    live: "https://felypedantas.github.io/Site_Verao/",
-    github: "https://github.com/FelypeDantas/Site_Verao",
-  },
-  {
-    num: "06",
-    category: "Front-End",
     title: "Stranger Things",
     description:
       "Experiência imersiva baseada no universo da série.",
@@ -86,7 +71,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mundo-Invertido",
   },
   {
-    num: "07",
+    num: "06",
     category: "Front-End",
     title: "Mixa Games",
     description:
@@ -102,7 +87,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mixa_Games",
   },
   {
-    num: "08",
+    num: "07",
     category: "Front-End",
     title: "Calculadora",
     description:
@@ -113,7 +98,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_Simples",
   },
   {
-    num: "09",
+    num: "08",
     category: "Front-End",
     title: "Calculadora IMC",
     description:
@@ -129,7 +114,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_IMC",
   },
   {
-    num: "10",
+    num: "09",
     category: "Front-End",
     title: "Gallery Draw",
     description:
@@ -140,7 +125,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Gallery_draw",
   },
   {
-    num: "11",
+    num: "10",
     category: "Front-End",
     title: "Cartão de Visitas",
     description:
@@ -155,7 +140,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Cartao_visitas",
   },
   {
-    num: "12",
+    num: "11",
     category: "Front-End",
     title: "Globalização",
     description:
@@ -166,7 +151,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
   },
   {
-    num: "13",
+    num: "12",
     category: "Full-Stack",
     title: "Cronômetro",
     description:
@@ -177,7 +162,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
   {
-    num: "14",
+    num: "13",
     category: "Full-Stack",
     title: "Sistema Financeiro",
     description:
@@ -188,7 +173,7 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/sistema_financeiro",
   },
   {
-    num: "15",
+    num: "14",
     category: "Full-Stack",
     title: "Análise de Dados",
     description:
