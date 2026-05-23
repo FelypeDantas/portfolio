@@ -38,17 +38,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Serenatto_Cafe",
   },
   {
-    num: "03",
-    category: "Front-End",
-    title: "Spa Calmaria",
-    description:
-      "Layout minimalista com foco em tipografia e estética relaxante.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "SASS" }],
-    image: "/assets/work/thumb4.png",
-    live: "https://felypedantas.github.io/Spa-Calmaria/",
-    github: "https://github.com/FelypeDantas/Spa-Calmaria",
-  },
-  {
     num: "04",
     category: "Front-End",
     title: "Lista de Compras",
