@@ -1,6 +1,10 @@
+export type StackItem = {
+  name: string;
+};
+
 export type Project = {
   num: string;
-  category: string;
+  category: "Front-End" | "Full-Stack";
   title: string;
   description: string;
   stack: { name: string }[];
@@ -9,9 +13,8 @@ export type Project = {
   github: string;
 };
 
-export const projects: Project[] = [
+const projects: Omit<Project, "num">[] = [
   {
-    num: "01",
     category: "Front-End",
     title: "Fokus",
     description:
@@ -22,23 +25,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Fokus_Complete",
   },
   {
-    num: "02",
-    category: "Front-End",
-    title: "Serenatto Café",
-    description:
-      "Site responsivo com Bootstrap para apresentação de cardápio e ambiente.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Bootstrap" },
-    ],
-    image: "/assets/work/thumb3.png",
-    live: "https://felypedantas.github.io/Serenatto_Cafe/",
-    github: "https://github.com/FelypeDantas/Serenatto_Cafe",
-  },
-  {
-    num: "03",
     category: "Front-End",
     title: "Lista de Compras",
     description:
@@ -49,7 +35,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Lista_Compras",
   },
   {
-    num: "04",
     category: "Full-Stack",
     title: "Svelte Perfis",
     description:
@@ -60,7 +45,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/svelte-perfis",
   },
   {
-    num: "05",
     category: "Front-End",
     title: "Stranger Things",
     description:
@@ -71,7 +55,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mundo-Invertido",
   },
   {
-    num: "06",
     category: "Front-End",
     title: "Mixa Games",
     description:
@@ -87,7 +70,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Mixa_Games",
   },
   {
-    num: "07",
     category: "Front-End",
     title: "Calculadora",
     description:
@@ -98,7 +80,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_Simples",
   },
   {
-    num: "08",
     category: "Front-End",
     title: "Calculadora IMC",
     description:
@@ -114,7 +95,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Calculadora_IMC",
   },
   {
-    num: "09",
     category: "Front-End",
     title: "Gallery Draw",
     description:
@@ -125,7 +105,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Gallery_draw",
   },
   {
-    num: "10",
     category: "Front-End",
     title: "Cartão de Visitas",
     description:
@@ -140,7 +119,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Cartao_visitas",
   },
   {
-    num: "11",
     category: "Front-End",
     title: "Globalização",
     description:
@@ -151,7 +129,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
   },
   {
-    num: "12",
     category: "Full-Stack",
     title: "Cronômetro",
     description:
@@ -162,7 +139,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/cronometro_python",
   },
   {
-    num: "13",
     category: "Full-Stack",
     title: "Sistema Financeiro",
     description:
@@ -173,7 +149,6 @@ export const projects: Project[] = [
     github: "https://github.com/FelypeDantas/sistema_financeiro",
   },
   {
-    num: "14",
     category: "Full-Stack",
     title: "Análise de Dados",
     description:
