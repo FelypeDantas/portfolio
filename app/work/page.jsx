@@ -1,18 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useMemo, useState } from "react";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import {
-  BsArrowUpRight,
-  BsGithub,
-} from "react-icons/bs";
+import { BsArrowUpRight, BsGithub } from "react-icons/bs";
 
 import {
   Tooltip,
@@ -23,63 +20,106 @@ import {
 
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 
-import { projects } from "@/data/project";
+import { projects, type Project } from "@/data/project";
 
 // --------------------------------------------------
 // STYLES
 // --------------------------------------------------
 
-const BUTTON_CLASS = `
-group
-flex
-items-center
-justify-center
+const styles = {
+  section: `
+    relative
+    min-h-screen
+    overflow-hidden
 
-w-[52px]
-h-[52px]
+    flex
+    items-center
 
-sm:w-[58px]
-sm:h-[58px]
+    py-24
+    md:py-28
+    xl:py-20
+  `,
 
-rounded-full
-border
-border-white/10
+  panel: `
+    relative
+    overflow-hidden
 
-bg-white/[0.04]
-backdrop-blur-xl
+    rounded-[24px]
+    md:rounded-[34px]
 
-transition-all
-duration-300
+    border
+    border-white/10
 
-hover:bg-accent
-hover:text-primary
-`;
+    bg-[#16161d]/80
+    backdrop-blur-xl
+  `,
 
-const PANEL_CLASS = `
-relative
-overflow-hidden
+  button: `
+    group
+    flex
+    items-center
+    justify-center
 
-rounded-[24px]
-md:rounded-[34px]
+    size-[52px]
+    sm:size-[58px]
 
-border
-border-white/10
+    rounded-full
 
-bg-[#16161d]/80
-backdrop-blur-xl
-`;
+    border
+    border-white/10
+
+    bg-white/[0.04]
+    backdrop-blur-xl
+
+    transition-all
+    duration-300
+
+    hover:bg-accent
+    hover:text-primary
+  `,
+};
 
 // --------------------------------------------------
-// LINKS
+// HELPERS
 // --------------------------------------------------
+
+const fadeUp = {
+  initial: {
+    opacity: 0,
+    y: 18,
+  },
+
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+
+  exit: {
+    opacity: 0,
+    y: -18,
+  },
+};
+
+const transition = {
+  duration: 0.4,
+};
+
+// --------------------------------------------------
+// PROJECT LINKS
+// --------------------------------------------------
+
+type ProjectLinksProps = Pick<
+  Project,
+  "live" | "github" | "title"
+>;
 
 function ProjectLinks({
   live,
   github,
   title,
-}) {
+}: ProjectLinksProps) {
   return (
-    <TooltipProvider delayDuration={100}>
+    <TooltipProvider delayDuration={120}>
       <div className="flex items-center gap-3 sm:gap-4">
         {live && (
           <Tooltip>
@@ -88,15 +128,17 @@ function ProjectLinks({
                 href={live}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Abrir ${title}`}
-                className={BUTTON_CLASS}
+                aria-label={`Abrir projeto ${title}`}
+                className={styles.button}
               >
                 <BsArrowUpRight
                   className="
                     text-xl
                     sm:text-2xl
+
                     transition-transform
                     duration-300
+
                     group-hover:-translate-y-1
                     group-hover:translate-x-1
                   "
@@ -118,7 +160,7 @@ function ProjectLinks({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Github ${title}`}
-                className={BUTTON_CLASS}
+                className={styles.button}
               >
                 <BsGithub className="text-xl sm:text-2xl" />
               </Link>
@@ -138,24 +180,33 @@ function ProjectLinks({
 // STACK
 // --------------------------------------------------
 
-function StackList({ stack = [] }) {
+type StackListProps = {
+  stack: string[];
+};
+
+function StackList({
+  stack,
+}: StackListProps) {
+  if (!stack?.length) return null;
+
   return (
     <ul className="flex flex-wrap gap-2 sm:gap-3">
-      {stack.map((item, index) => (
+      {stack.map((tech) => (
         <li
-          key={`${item.name}-${index}`}
+          key={tech}
           className="
+            rounded-full
+
+            border
+            border-white/10
+
+            bg-white/[0.03]
+
             px-3
             py-1.5
 
             sm:px-4
             sm:py-2
-
-            rounded-full
-            border
-            border-white/10
-
-            bg-white/[0.03]
 
             text-xs
             sm:text-sm
@@ -163,10 +214,9 @@ function StackList({ stack = [] }) {
             text-accent
 
             backdrop-blur-md
-            shadow-lg
           "
         >
-          {item.name}
+          {tech}
         </li>
       ))}
     </ul>
@@ -174,169 +224,180 @@ function StackList({ stack = [] }) {
 }
 
 // --------------------------------------------------
-// INFO
+// PROJECT INFO
 // --------------------------------------------------
 
-function ProjectInfo({ project }) {
-  return (
-    <motion.div
-      key={project.num}
-      initial={{
-        opacity: 0,
-        y: 18,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
-      transition={{
-        duration: 0.4,
-      }}
-      className="
-        flex
-        flex-col
-        justify-between
-        h-full
+type ProjectInfoProps = {
+  project: Project;
+};
 
-        gap-8
-        xl:gap-10
-      "
-    >
-      <div className="space-y-6 sm:space-y-8">
-        
-        {/* NUMBER */}
-        <div className="flex items-center gap-3 sm:gap-5">
+function ProjectInfo({
+  project,
+}: ProjectInfoProps) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={project.id}
+        variants={fadeUp}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={transition}
+        className="
+          flex
+          h-full
+          flex-col
+          justify-between
+
+          gap-8
+          xl:gap-10
+        "
+      >
+        <div className="space-y-6 sm:space-y-8">
+          {/* NUMBER */}
+          <div className="flex items-center gap-3 sm:gap-5">
+            <span
+              className="
+                shrink-0
+
+                text-[58px]
+                sm:text-[90px]
+                xl:text-[140px]
+
+                font-extrabold
+                leading-none
+
+                text-transparent
+                text-outline
+
+                opacity-40
+              "
+            >
+              {project.id}
+            </span>
+
+            <div
+              className="
+                h-[2px]
+                flex-1
+
+                bg-gradient-to-r
+                from-accent
+                to-transparent
+              "
+            />
+          </div>
+
+          {/* CATEGORY */}
           <span
             className="
-              text-[58px]
-              sm:text-[90px]
-              xl:text-[140px]
+              block
 
-              leading-none
-              font-extrabold
+              text-[10px]
+              sm:text-sm
 
-              text-transparent
-              text-outline
+              uppercase
+              tracking-[0.25em]
+              sm:tracking-[0.4em]
 
-              opacity-40
-              shrink-0
+              text-accent
             "
           >
-            {project.num}
+            {project.category}
           </span>
 
-          <div
+          {/* TITLE */}
+          <h1
             className="
-              h-[2px]
-              flex-1
-              bg-gradient-to-r
-              from-accent
-              to-transparent
+              break-words
+
+              text-4xl
+              sm:text-5xl
+              md:text-6xl
+              xl:text-7xl
+
+              font-bold
+              leading-[0.95]
+              tracking-tight
             "
-          />
+          >
+            {project.title}
+          </h1>
+
+          {/* DESCRIPTION */}
+          <p
+            className="
+              max-w-full
+              xl:max-w-[520px]
+
+              text-base
+              sm:text-lg
+
+              leading-relaxed
+              text-white/60
+            "
+          >
+            {project.description}
+          </p>
+
+          {/* STACK */}
+          <StackList stack={project.stack} />
         </div>
 
-        {/* CATEGORY */}
-        <span
-          className="
-            block
+        {/* FOOTER */}
+        <div className="space-y-5 sm:space-y-6">
+          <div className="h-px w-full bg-white/10" />
 
-            uppercase
-            tracking-[0.25em]
-            sm:tracking-[0.4em]
-
-            text-[10px]
-            sm:text-sm
-
-            text-accent
-          "
-        >
-          {project.category}
-        </span>
-
-        {/* TITLE */}
-        <h1
-          className="
-            text-4xl
-            sm:text-5xl
-            md:text-6xl
-            xl:text-7xl
-
-            font-bold
-            leading-[0.95]
-            tracking-tight
-
-            break-words
-          "
-        >
-          {project.title}
-        </h1>
-
-        {/* DESCRIPTION */}
-        <p
-          className="
-            max-w-full
-            xl:max-w-[520px]
-
-            text-base
-            sm:text-lg
-
-            text-white/60
-            leading-relaxed
-          "
-        >
-          {project.description}
-        </p>
-
-        {/* STACK */}
-        <StackList stack={project.stack} />
-      </div>
-
-      {/* FOOTER */}
-      <div className="space-y-5 sm:space-y-6">
-        <div className="h-px w-full bg-white/10" />
-
-        <ProjectLinks
-          live={project.live}
-          github={project.github}
-          title={project.title}
-        />
-      </div>
-    </motion.div>
+          <ProjectLinks
+            live={project.live}
+            github={project.github}
+            title={project.title}
+          />
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
 // --------------------------------------------------
-// SLIDE
+// PROJECT SLIDE
 // --------------------------------------------------
 
-function ProjectSlide({ project }) {
+type ProjectSlideProps = {
+  project: Project;
+};
+
+function ProjectSlide({
+  project,
+}: ProjectSlideProps) {
   return (
     <div
       className={`
-        ${PANEL_CLASS}
+        ${styles.panel}
+
+        flex
+        items-center
+        justify-center
 
         h-[260px]
         sm:h-[360px]
         md:h-[480px]
         xl:h-[700px]
 
-        flex
-        items-center
-        justify-center
-
         p-3
         sm:p-6
         xl:p-10
       `}
     >
-      {/* Ambient Glow */}
+      {/* Glow */}
       <div
         className="
+          pointer-events-none
+
           absolute
           inset-0
+
           bg-[radial-gradient(circle_at_center,_rgba(0,255,170,0.16),transparent_65%)]
-          pointer-events-none
         "
       />
 
@@ -345,6 +406,7 @@ function ProjectSlide({ project }) {
         className="
           absolute
           inset-0
+
           opacity-[0.03]
 
           bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)]
@@ -359,8 +421,10 @@ function ProjectSlide({ project }) {
         className="
           absolute
           inset-0
+
           opacity-[0.025]
           mix-blend-soft-light
+
           bg-[url('/assets/noise.png')]
         "
       />
@@ -377,8 +441,8 @@ function ProjectSlide({ project }) {
           relative
           z-20
 
-          w-full
           h-full
+          w-full
         "
       >
         <Image
@@ -403,6 +467,8 @@ function ProjectSlide({ project }) {
       {/* Overlay */}
       <div
         className="
+          pointer-events-none
+
           absolute
           inset-0
 
@@ -410,8 +476,6 @@ function ProjectSlide({ project }) {
           from-black/30
           via-transparent
           to-transparent
-
-          pointer-events-none
         "
       />
     </div>
@@ -427,38 +491,33 @@ export default function Work() {
     useState(0);
 
   const currentProject = useMemo(
-    () => projects[currentIndex],
+    () => projects[currentIndex] ?? projects[0],
     [currentIndex]
   );
 
   const handleSlideChange = useCallback(
-    (swiper) => {
+    (swiper: { activeIndex: number }) => {
       setCurrentIndex(swiper.activeIndex);
     },
     []
   );
 
+  if (!projects.length || !currentProject) {
+    return (
+      <section className="flex min-h-screen items-center justify-center">
+        <p className="text-white/60">
+          Nenhum projeto encontrado.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{
-        duration: 0.5,
-      }}
-      className="
-        relative
-
-        min-h-screen
-
-        flex
-        items-center
-
-        overflow-hidden
-
-        py-24
-        md:py-28
-        xl:py-20
-      "
+      transition={{ duration: 0.5 }}
+      className={styles.section}
     >
       {/* BACKGROUND */}
       <div
@@ -475,6 +534,7 @@ export default function Work() {
         <div
           className="
             grid
+            items-center
 
             grid-cols-1
             xl:grid-cols-[380px_minmax(0,1fr)]
@@ -482,8 +542,6 @@ export default function Work() {
             gap-10
             lg:gap-14
             xl:gap-16
-
-            items-center
           "
         >
           {/* LEFT */}
@@ -501,24 +559,24 @@ export default function Work() {
           {/* RIGHT */}
           <div
             className="
-              order-1
-              xl:order-2
-
               relative
               min-w-0
+
+              order-1
+              xl:order-2
             "
           >
-            {/* BIG GLOW */}
+            {/* Glow */}
             <div
               className="
                 absolute
                 inset-0
                 -z-10
 
+                rounded-full
+
                 bg-accent/10
                 blur-[120px]
-
-                rounded-full
               "
             />
 
@@ -529,7 +587,7 @@ export default function Work() {
               className="w-full"
             >
               {projects.map((project) => (
-                <SwiperSlide key={project.num}>
+                <SwiperSlide key={project.id}>
                   <ProjectSlide project={project} />
                 </SwiperSlide>
               ))}
@@ -537,6 +595,7 @@ export default function Work() {
               <WorkSliderBtns
                 containerStyles="
                   absolute
+                  z-30
 
                   bottom-4
                   right-4
@@ -544,13 +603,15 @@ export default function Work() {
                   sm:bottom-6
                   sm:right-6
 
-                  z-30
-
                   flex
                   gap-2
                   sm:gap-3
                 "
                 btnStyles="
+                  flex
+                  items-center
+                  justify-center
+
                   w-[44px]
                   h-[44px]
 
@@ -558,21 +619,18 @@ export default function Work() {
                   sm:h-[56px]
 
                   rounded-full
+
                   border
                   border-white/10
 
                   bg-black/40
                   backdrop-blur-xl
 
-                  hover:bg-accent
-                  hover:text-primary
-
                   transition-all
                   duration-300
 
-                  flex
-                  items-center
-                  justify-center
+                  hover:bg-accent
+                  hover:text-primary
                 "
               />
             </Swiper>
