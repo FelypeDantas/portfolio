@@ -1,25 +1,25 @@
-export type StackItem = {
-  name: string;
-};
+export type Category = "Front-End" | "Full-Stack";
 
 export type Project = {
-  num: string;
-  category: "Front-End" | "Full-Stack";
+  id: string;
+  category: Category;
   title: string;
   description: string;
-  stack: { name: string }[];
+  stack: string[];
   image: string;
   live: string;
   github: string;
 };
 
-const projects: Omit<Project, "num">[] = [
+type ProjectData = Omit<Project, "id">;
+
+const projectData: ProjectData[] = [
   {
     category: "Front-End",
     title: "Fokus",
     description:
       "Interface moderna com animações e interações dinâmicas focadas em UX.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
+    stack: ["HTML5", "CSS3", "JavaScript"],
     image: "/assets/work/thumb2.png",
     live: "https://felypedantas.github.io/Fokus_Complete/",
     github: "https://github.com/FelypeDantas/Fokus_Complete",
@@ -29,7 +29,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Lista de Compras",
     description:
       "Gerenciador de compras com checklist e organização dinâmica.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
+    stack: ["HTML5", "CSS3", "JavaScript"],
     image: "/assets/work/thumb6.png",
     live: "https://felypedantas.github.io/Lista_Compras/",
     github: "https://github.com/FelypeDantas/Lista_Compras",
@@ -39,7 +39,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Svelte Perfis",
     description:
       "App com Svelte para exibição dinâmica de perfis de usuários.",
-    stack: [{ name: "Svelte" }, { name: "Node.js" }],
+    stack: ["Svelte", "Node.js"],
     image: "/assets/work/thumb7.png",
     live: "https://svelte-perfis-two.vercel.app/",
     github: "https://github.com/FelypeDantas/svelte-perfis",
@@ -49,7 +49,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Stranger Things",
     description:
       "Experiência imersiva baseada no universo da série.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
+    stack: ["HTML5", "CSS3", "JavaScript"],
     image: "/assets/work/thumb9.png",
     live: "https://felypedantas.github.io/Mundo-Invertido/",
     github: "https://github.com/FelypeDantas/Mundo-Invertido",
@@ -59,12 +59,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Mixa Games",
     description:
       "Gerenciador de coleção de jogos com interface amigável.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Bootstrap" },
-    ],
+    stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
     image: "/assets/work/thumb10.png",
     live: "https://felypedantas.github.io/Mixa_Games/",
     github: "https://github.com/FelypeDantas/Mixa_Games",
@@ -72,9 +67,8 @@ const projects: Omit<Project, "num">[] = [
   {
     category: "Front-End",
     title: "Calculadora",
-    description:
-      "Calculadora simples com interface moderna.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
+    description: "Calculadora simples com interface moderna.",
+    stack: ["HTML5", "CSS3", "JavaScript"],
     image: "/assets/work/thumb11.png",
     live: "https://felypedantas.github.io/Calculadora_Simples/",
     github: "https://github.com/FelypeDantas/Calculadora_Simples",
@@ -84,12 +78,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Calculadora IMC",
     description:
       "Calculadora de IMC com gráficos e visualização.",
-    stack: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "Chart.js" },
-    ],
+    stack: ["HTML5", "CSS3", "JavaScript", "Chart.js"],
     image: "/assets/work/thumb12.png",
     live: "https://felypedantas.github.io/Calculadora_IMC/",
     github: "https://github.com/FelypeDantas/Calculadora_IMC",
@@ -99,7 +88,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Gallery Draw",
     description:
       "Galeria de desenhos criada com JavaScript.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }, { name: "JavaScript" }],
+    stack: ["HTML5", "CSS3", "JavaScript"],
     image: "/assets/work/thumb13.png",
     live: "https://felypedantas.github.io/Gallery_draw/",
     github: "https://github.com/FelypeDantas/Gallery_draw",
@@ -109,11 +98,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Cartão de Visitas",
     description:
       "Página pessoal com contatos e design moderno.",
-    stack: [
-      { name: "HTML5" },
-      { name: "Bootstrap5" },
-      { name: "TailwindCSS" },
-    ],
+    stack: ["HTML5", "Bootstrap5", "TailwindCSS"],
     image: "/assets/work/thumb15.png",
     live: "https://felypedantas.github.io/Cartao_visitas/",
     github: "https://github.com/FelypeDantas/Cartao_visitas",
@@ -123,17 +108,18 @@ const projects: Omit<Project, "num">[] = [
     title: "Globalização",
     description:
       "Projeto educacional com HTML e CSS puro.",
-    stack: [{ name: "HTML5" }, { name: "CSS3" }],
+    stack: ["HTML5", "CSS3"],
     image: "/assets/work/thumb16.png",
     live: "https://felypedantas.github.io/Globalizacao_projeto_educacional/",
-    github: "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
+    github:
+      "https://github.com/FelypeDantas/Globalizacao_projeto_educacional",
   },
   {
     category: "Full-Stack",
     title: "Cronômetro",
     description:
       "Cronômetro online com Python e Flask.",
-    stack: [{ name: "Python" }, { name: "Flask" }],
+    stack: ["Python", "Flask"],
     image: "/assets/work/thumb17.png",
     live: "https://cronometro-bzjg.onrender.com/",
     github: "https://github.com/FelypeDantas/cronometro_python",
@@ -143,7 +129,7 @@ const projects: Omit<Project, "num">[] = [
     title: "Sistema Financeiro",
     description:
       "Sistema de cálculo de impostos com Flask.",
-    stack: [{ name: "Python" }, { name: "Flask" }],
+    stack: ["Python", "Flask"],
     image: "/assets/work/thumb18.png",
     live: "https://sistema-financeiro-9arh.onrender.com/",
     github: "https://github.com/FelypeDantas/sistema_financeiro",
@@ -153,14 +139,14 @@ const projects: Omit<Project, "num">[] = [
     title: "Análise de Dados",
     description:
       "Sistema para análise de frequência e dados.",
-    stack: [{ name: "Python" }, { name: "Flask" }],
+    stack: ["Python", "Flask"],
     image: "/assets/work/thumb19.png",
     live: "https://sistema-de-analise-de-dados.onrender.com/",
     github: "https://github.com/FelypeDantas/sistema-de-analise-de-dados",
   },
 ];
 
-export const projects: Project[] = project.map((project, index) => ({
+export const projects: Project[] = projectData.map((project, index) => ({
   ...project,
-  num: String(index + 1).padStart(2, "0"),
+  id: String(index + 1).padStart(2, "0"),
 }));
