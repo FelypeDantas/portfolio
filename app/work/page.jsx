@@ -20,7 +20,7 @@ import {
 
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 
-import { projects, type Project } from "@/data/project";
+import { projects } from "@/data/project";
 
 // --------------------------------------------------
 // STYLES
