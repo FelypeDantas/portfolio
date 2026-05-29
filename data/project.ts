@@ -159,3 +159,8 @@ const projects: Omit<Project, "num">[] = [
     github: "https://github.com/FelypeDantas/sistema-de-analise-de-dados",
   },
 ];
+
+export const projects: Project[] = project.map((project, index) => ({
+  ...project,
+  num: String(index + 1).padStart(2, "0"),
+}));
