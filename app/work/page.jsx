@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
@@ -23,17 +24,16 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 import { projects } from "@/data/project";
 
 // --------------------------------------------------
-// STYLES
+// CONSTANTS
 // --------------------------------------------------
 
 const styles = {
   section: `
     relative
-    min-h-screen
-    overflow-hidden
-
     flex
+    min-h-screen
     items-center
+    overflow-hidden
 
     py-24
     md:py-28
@@ -79,10 +79,6 @@ const styles = {
   `,
 };
 
-// --------------------------------------------------
-// HELPERS
-// --------------------------------------------------
-
 const fadeUp = {
   initial: {
     opacity: 0,
@@ -108,16 +104,11 @@ const transition = {
 // PROJECT LINKS
 // --------------------------------------------------
 
-type ProjectLinksProps = Pick<
-  Project,
-  "live" | "github" | "title"
->;
-
 function ProjectLinks({
   live,
   github,
   title,
-}: ProjectLinksProps) {
+}) {
   return (
     <TooltipProvider delayDuration={120}>
       <div className="flex items-center gap-3 sm:gap-4">
@@ -180,14 +171,8 @@ function ProjectLinks({
 // STACK
 // --------------------------------------------------
 
-type StackListProps = {
-  stack: string[];
-};
-
-function StackList({
-  stack,
-}: StackListProps) {
-  if (!stack?.length) return null;
+function StackList({ stack = [] }) {
+  if (!stack.length) return null;
 
   return (
     <ul className="flex flex-wrap gap-2 sm:gap-3">
@@ -227,13 +212,7 @@ function StackList({
 // PROJECT INFO
 // --------------------------------------------------
 
-type ProjectInfoProps = {
-  project: Project;
-};
-
-function ProjectInfo({
-  project,
-}: ProjectInfoProps) {
+function ProjectInfo({ project }) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -363,13 +342,7 @@ function ProjectInfo({
 // PROJECT SLIDE
 // --------------------------------------------------
 
-type ProjectSlideProps = {
-  project: Project;
-};
-
-function ProjectSlide({
-  project,
-}: ProjectSlideProps) {
+function ProjectSlide({ project }) {
   return (
     <div
       className={`
@@ -490,19 +463,22 @@ export default function Work() {
   const [currentIndex, setCurrentIndex] =
     useState(0);
 
-  const currentProject = useMemo(
-    () => projects[currentIndex] ?? projects[0],
-    [currentIndex]
-  );
+  const currentProject = useMemo(() => {
+    return (
+      projects?.[currentIndex] ??
+      projects?.[0] ??
+      null
+    );
+  }, [currentIndex]);
 
   const handleSlideChange = useCallback(
-    (swiper: { activeIndex: number }) => {
+    (swiper) => {
       setCurrentIndex(swiper.activeIndex);
     },
     []
   );
 
-  if (!projects.length || !currentProject) {
+  if (!projects?.length || !currentProject) {
     return (
       <section className="flex min-h-screen items-center justify-center">
         <p className="text-white/60">
@@ -612,11 +588,11 @@ export default function Work() {
                   items-center
                   justify-center
 
-                  w-[44px]
                   h-[44px]
+                  w-[44px]
 
-                  sm:w-[56px]
                   sm:h-[56px]
+                  sm:w-[56px]
 
                   rounded-full
 
