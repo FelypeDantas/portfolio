@@ -85,16 +85,6 @@ const projectData: ProjectData[] = [
   },
   {
     category: "Front-End",
-    title: "Gallery Draw",
-    description:
-      "Galeria de desenhos criada com JavaScript.",
-    stack: ["HTML5", "CSS3", "JavaScript"],
-    image: "/assets/work/thumb13.png",
-    live: "https://felypedantas.github.io/Gallery_draw/",
-    github: "https://github.com/FelypeDantas/Gallery_draw",
-  },
-  {
-    category: "Front-End",
     title: "Cartão de Visitas",
     description:
       "Página pessoal com contatos e design moderno.",
