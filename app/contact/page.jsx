@@ -44,8 +44,8 @@ const CONTACT_INFO = [
   {
     icon: FaPhoneAlt,
     title: "Telefone",
-    value: "+55 (11) 94640-0631",
-    href: "tel:+5511946400631",
+    value: "+55 (11) 99227-8449",
+    href: "tel:+5511992278449",
   },
   {
     icon: FaEnvelope,
@@ -148,7 +148,7 @@ ${form.service}
 ${form.message}
     `.trim();
 
-    const url = `https://wa.me/5511946400631?text=${encodeURIComponent(
+    const url = `https://wa.me/5511992278449?text=${encodeURIComponent(
       message
     )}`;
 
