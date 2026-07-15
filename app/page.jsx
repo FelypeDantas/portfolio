@@ -295,6 +295,45 @@ export default function Home() {
               </Link>
             </motion.div>
 
+            <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="
+                    group
+              
+                    h-[58px]
+                    px-7
+              
+                    rounded-full
+              
+                    bg-transparent
+                    border
+                    border-accent/40
+              
+                    text-accent
+              
+                    hover:bg-accent
+                    hover:text-primary
+              
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <span className="uppercase tracking-wide">
+                    Quero minha Lading Page
+                  </span>
+              
+                  <HiOutlineChatBubbleLeftRight
+                    className="
+                      ml-2
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </Button>
+              </Link>
+
             {/* SOCIAL */}
             <motion.div
               variants={fadeUp}
@@ -339,45 +378,6 @@ export default function Home() {
               />
             </motion.div>
           </div>
-
-            <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="
-                    group
-              
-                    h-[58px]
-                    px-7
-              
-                    rounded-full
-              
-                    bg-transparent
-                    border
-                    border-accent/40
-              
-                    text-accent
-              
-                    hover:bg-accent
-                    hover:text-primary
-              
-                    transition-all
-                    duration-300
-                  "
-                >
-                  <span className="uppercase tracking-wide">
-                    Quero minha Lading Page
-                  </span>
-              
-                  <HiOutlineChatBubbleLeftRight
-                    className="
-                      ml-2
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </Button>
-              </Link>
 
           {/* RIGHT */}
           <motion.div
