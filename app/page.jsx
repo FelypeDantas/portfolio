@@ -293,9 +293,8 @@ export default function Home() {
                   />
                 </Button>
               </Link>
-            </motion.div>
 
-            <Link href="/contact">
+               <Link href="/contact">
                 <Button
                   size="lg"
                   className="
@@ -333,6 +332,8 @@ export default function Home() {
                   />
                 </Button>
               </Link>
+            </motion.div>
+
 
             {/* SOCIAL */}
             <motion.div
