@@ -1,4 +1,5 @@
 import { JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 
 import "./globals.css";
 
@@ -13,7 +14,6 @@ import StairEffect from "@/components/StairEffect";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-
   weight: [
     "100",
     "200",
@@ -24,9 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
     "700",
     "800",
   ],
-
   variable: "--font-jetbrains-mono",
-
   display: "swap",
 });
 
@@ -36,10 +34,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata = {
   title: "Meu Portfólio",
-
   description:
     "Portfólio desenvolvido com Next.js mostrando projetos e habilidades.",
 };
+
+// --------------------------------------------------
+// META PIXEL
+// --------------------------------------------------
+
+const META_PIXEL_ID = "61591797248815";
 
 // --------------------------------------------------
 // ROOT LAYOUT
@@ -47,12 +50,33 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+}: {
+  children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="pt-BR"
-      suppressHydrationWarning
-    >
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+        >
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}
+            (window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '${META_PIXEL_ID}');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+      </head>
+
       <body
         className={`
           ${jetbrainsMono.variable}
@@ -64,6 +88,17 @@ export default function RootLayout({
           antialiased
         `}
       >
+        {/* Fallback para usuários sem JavaScript */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
+
         {/* Glow futurista */}
         <MouseGlow />
 
