@@ -48,28 +48,35 @@ const META_PIXEL_ID = "1027487592995871";
 // ROOT LAYOUT
 // --------------------------------------------------
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-        >
+        <Script id="meta-pixel" strategy="afterInteractive">
           {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}
-            (window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
+            !function(f,b,e,v,n,t,s){
+              if(f.fbq)return;
+              n=f.fbq=function(){
+                n.callMethod
+                  ? n.callMethod.apply(n,arguments)
+                  : n.queue.push(arguments)
+              };
+              if(!f._fbq)f._fbq=n;
+              n.push=n;
+              n.loaded=!0;
+              n.version='2.0';
+              n.queue=[];
+              t=b.createElement(e);
+              t.async=!0;
+              t.src=v;
+              s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s);
+            }(
+              window,
+              document,
+              'script',
+              'https://connect.facebook.net/en_US/fbevents.js'
+            );
 
             fbq('init', '${META_PIXEL_ID}');
             fbq('track', 'PageView');
@@ -88,7 +95,6 @@ export default function RootLayout({
           antialiased
         `}
       >
-        {/* Fallback para usuários sem JavaScript */}
         <noscript>
           <img
             height="1"
@@ -99,18 +105,14 @@ export default function RootLayout({
           />
         </noscript>
 
-        {/* Glow futurista */}
         <MouseGlow />
 
-        {/* Camada principal */}
         <div className="relative z-10">
           <Header />
 
           <StairEffect />
 
-          <PageTransition>
-            {children}
-          </PageTransition>
+          <PageTransition>{children}</PageTransition>
         </div>
       </body>
     </html>
