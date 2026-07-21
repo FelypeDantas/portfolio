@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 
 import Header from "@/components/Header";
+import MetaPixel from "@/components/MetaPixel";
 import MouseGlow from "@/components/MouseGlow";
 import PageTransition from "@/components/PageTransition";
 import StairEffect from "@/components/StairEffect";
@@ -79,7 +80,6 @@ export default function RootLayout({ children }) {
             );
 
             fbq('init', '${META_PIXEL_ID}');
-            fbq('track', 'PageView');
           `}
         </Script>
       </head>
@@ -104,6 +104,9 @@ export default function RootLayout({ children }) {
             alt=""
           />
         </noscript>
+
+        {/* Responsável por enviar PageView a cada navegação */}
+        <MetaPixel />
 
         <MouseGlow />
 
